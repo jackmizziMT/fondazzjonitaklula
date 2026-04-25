@@ -1,39 +1,48 @@
 <!DOCTYPE html>
-<html lang="mt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fondazzjoni ta' Klula</title>
+    <title>Fondazzjoni ta' Klula | Gozo. Culture. Alive.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav id="main-nav">
+        <div class="nav-container">
+            <span class="logo-text">KLULA</span>
+            <ul id="nav-links"></ul>
+        </div>
+    </nav>
 
-    <header>
-        <nav>
-            <div class="logo">Fondazzjoni ta' Klula</div>
-        </nav>
+    <header class="hero-section" id="hero-bg">
+        <div class="hero-content">
+            <h1 id="hero-heading"></h1>
+            <p id="hero-subheading"></p>
+            <a href="#" id="hero-cta" class="btn-primary"></a>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Ħidma għall-Komunità</h1>
-            <p>Welcome to the official home of Fondazzjoni ta' Klula. We are currently building our digital presence.</p>
-        </section>
+    <section class="intro-section container">
+        <h2 id="intro-heading"></h2>
+        <p id="intro-body"></p>
+    </section>
 
-        <section id="contact">
-            <h2>Ikkuntatjana</h2>
-            <form action="https://formspree.io/f/xoqyyreq" method="POST">
-                <input type="text" name="name" placeholder="Isem" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Il-messaġġ tiegħek" required></textarea>
-                <button type="submit">Ibgħat</button>
-            </form>
-        </section>
-    </main>
+    <section class="highlights grid container" id="highlights-container"></section>
 
-    <footer>
-        <p>&copy; 2026 Fondazzjoni ta' Klula. All rights reserved.</p>
+    <footer id="main-footer">
+        <div class="container footer-grid">
+            <div>
+                <h3 class="logo-text">KLULA</h3>
+                <p id="footer-tagline"></p>
+            </div>
+            <div id="footer-info">
+                <p id="footer-reg"></p>
+                <p id="footer-email"></p>
+            </div>
+        </div>
     </footer>
 
+    <script src="app.js"></script>
 </body>
 </html>
