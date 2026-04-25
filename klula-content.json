@@ -1,0 +1,260 @@
+{
+  "site": {
+    "name": "Fondazzjoni ta' Klula",
+    "tagline": "Gozo. Culture. Alive.",
+    "description": "A heritage and cultural foundation celebrating the people, places, and traditions of Gozo.",
+    "registration": "VO/0420",
+    "email": "taklula.gozo@gmail.com",
+    "phone": "",
+    "social": {
+      "facebook": "https://www.facebook.com/taklula",
+      "instagram": ""
+    },
+    "formspree_endpoint": "",
+    "language": {
+      "default": "en",
+      "available": ["en", "mt"]
+    }
+  },
+
+  "design": {
+    "palette": {
+      "primary": "#E8541A",
+      "secondary": "#2B9EC3",
+      "accent": "#C9962A",
+      "background": "#FAFAF7",
+      "surface": "#F7F4EE",
+      "text": "#1F1F1F",
+      "text_light": "#5A5A5A",
+      "white": "#FFFFFF"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "DM Sans"
+    },
+    "hero_image": "images/hero.jpg",
+    "logo": "images/logo.svg"
+  },
+
+  "nav": {
+    "items": [
+      { "label": "Home",       "page": "index.html" },
+      { "label": "About",      "page": "about.html" },
+      { "label": "What We Do", "page": "what-we-do.html" },
+      { "label": "Events",     "page": "events.html" },
+      { "label": "Gallery",    "page": "gallery.html" },
+      { "label": "Contact",    "page": "contact.html" }
+    ]
+  },
+
+  "pages": {
+
+    "home": {
+      "hero": {
+        "heading": "Gozo. Culture. Alive.",
+        "subheading": "Celebrating the heritage, culture, and community of Santa Lucija & Gozo.",
+        "cta_label": "Discover What We Do",
+        "cta_href": "what-we-do.html",
+        "image": "images/hero.jpg"
+      },
+      "intro": {
+        "heading": "Who We Are",
+        "body": "Fondazzjoni ta' Klula is a voluntary organisation dedicated to safeguarding and celebrating the cultural heritage of Santa Lucija, Gozo. We bring the community together through events, arts, oral history, and shared traditions — for residents, visitors, and anyone who loves this village."
+      },
+      "highlights": [
+        {
+          "icon": "heritage",
+          "heading": "Heritage",
+          "body": "Documenting and preserving the stories, traditions, and places that make Santa Lucija unique."
+        },
+        {
+          "icon": "culture",
+          "heading": "Culture",
+          "body": "From literary evenings to public event, we bring cultural experiences into the heart of the village, with an outlook to Gozo at large."
+        },
+        {
+          "icon": "community",
+          "heading": "Community",
+          "body": "Rooted in Santa Lucija, welcoming to all. Our events are designed for everyone — locals and visitors alike."
+        }
+      ],
+      "upcoming_events_heading": "What's On",
+      "upcoming_events_count": 3,
+      "cta_banner": {
+        "heading": "Be Part of the Story",
+        "body": "Join us as a member, volunteer, or supporter. Santa Lucija's heritage belongs to all of us.",
+        "cta_label": "Get in Touch",
+        "cta_href": "contact.html"
+      }
+    },
+
+    "about": {
+      "hero": {
+        "heading": "About Us",
+        "subheading": "A foundation built on love for Santa Lucija."
+      },
+      "story": {
+        "heading": "Our Story",
+        "body": "Fondazzjoni ta' Klula — VO/0420 — was founded by a group of Santa Lucija residents committed to ensuring that the village's rich heritage is not lost to time. We take our name from Klula, the affectionate local name for Santa Lucija itself.\n\nWe are a registered voluntary organisation operating under the Commissioner for Voluntary Organisations, with activities spanning cultural events, heritage documentation, arts programming, and community engagement."
+      },
+      "objectives": {
+        "heading": "What We Stand For",
+        "items": [
+          "Safeguarding the tangible and intangible cultural heritage of Santa Lucija",
+          "Promoting the village's history, traditions, and natural environment",
+          "Supporting arts and cultural activities that engage the local community",
+          "Building a welcoming space for residents, visitors, and the wider public",
+          "Fostering partnerships with local, national, and international organisations",
+        
+        ]
+      },
+      "committee": {
+        "heading": "Our Committee",
+        "members": [
+          { "name": "Jack Mizzi",         "role": "Chairperson" },
+          { "name": "Mauro Buttigieg",                   "role": "Vice Chairperson" },
+          { "name": "Marilyn Cefai",                   "role": "Secretary" },
+          { "name": "Ann Marie Cauchi",                   "role": "Treasurer" },
+          { "name": "Mario Mizzi",                   "role": "Assistant Treasurer" },
+          { "name": "Austin Camilleri",   "role": "Committee Member" }
+           { "name": "Joseph Mizzi",   "role": "Co-Founder & Committee Member" }
+        ]
+      },
+      "registration_note": "Fondazzjoni ta' Klula is registered with the Commissioner for Voluntary Organisations: VO/0420."
+    },
+
+    "what_we_do": {
+      "hero": {
+        "heading": "What We Do",
+        "subheading": "Heritage, culture, and community — all year round."
+      },
+      "intro": "Our programme combines long-standing village traditions with new cultural initiatives. Whether you're a Santa Lucija resident or a visitor to Gozo, there's something here for you.",
+      "activities": [
+        {
+          "id": "wine-festival",
+          "title": "Wine Festival",
+          "period": "June",
+          "description": "An annual celebration of Gozitan wine and local produce, held in the village and open to all.",
+          "image": "images/activities/wine-festival.jpg",
+          "tags": ["annual", "community"]
+        },
+        {
+          "id": "literary-evenings",
+          "title": "Ġimgħa Stejjer - Literary Evenings",
+          "period": "Quarterly — First Fridays",
+          "description": "Quarterly literary evenings held in partnership with Inizjamed, bringing poetry, prose, and conversation to Santa Lucija.",
+          "image": "images/activities/literary-evenings.jpg",
+          "tags": ["quarterly", "arts", "partnership"]
+        },
+        {
+          "id": "heritage-walks",
+          "title": "Heritage & Nature Walks",
+          "period": "September–November and March–May",
+          "description": "Guided walks through Santa Lucija's countryside and built heritage, led by local guides who know every path and story.",
+          "image": "images/activities/heritage-walks.jpg",
+          "tags": ["seasonal", "heritage", "nature"]
+        },
+        {
+          "id": "luminary-evening",
+          "title": "Luminary Evening",
+          "period": "Around 13 December — Feast of St Lucy",
+          "description": "A candlelit evening celebrating the feast of Santa Lucija, our patron saint, with the children's candle tradition at its heart.",
+          "image": "images/activities/luminary-evening.jpg",
+          "tags": ["annual", "tradition", "feast"]
+        },
+
+      ]
+    },
+
+    "events": {
+      "hero": {
+        "heading": "Events",
+        "subheading": ""
+      },
+      "intro": "All our events are open to everyone — residents, visitors, and friends of the village. Check back regularly for updates.",
+      "items": [
+        {
+          "id": "evt-001",
+          "title": "Wine Festival 2026",
+          "date": "2026-06-14",
+          "time": "18:00",
+          "location": "Santa Lucija Village Square",
+          "description": "Join us for our annual Wine Festival celebrating Gozitan wine and local produce. Free entry.",
+          "image": "images/events/wine-festival-2026.jpg",
+          "tags": ["festival", "community"],
+          "status": "upcoming"
+        },
+        {
+          "id": "evt-002",
+          "title": "Literary Evening with Inizjamed",
+          "date": "2026-07-03",
+          "time": "19:30",
+          "location": "Venue TBC, Santa Lucija",
+          "description": "Our quarterly literary evening in partnership with Inizjamed. Poetry, prose, and good conversation.",
+          "image": "images/events/literary-evening.jpg",
+          "tags": ["arts", "literature"],
+          "status": "upcoming"
+        }
+      ]
+    },
+
+    "gallery": {
+      "hero": {
+        "heading": "Gallery",
+        "subheading": "Moments from Santa Lucija."
+      },
+      "intro": "A growing collection of images from our events and activities.",
+      "albums": [
+        {
+          "id": "alb-001",
+          "title": "Wine Festival",
+          "year": "2025",
+          "cover": "images/gallery/wine-festival-2025/cover.jpg",
+          "images": []
+        },
+        {
+          "id": "alb-002",
+          "title": "Luminary Evening",
+          "year": "2025",
+          "cover": "images/gallery/luminary-2025/cover.jpg",
+          "images": []
+        }
+      ]
+    },
+
+    "contact": {
+      "hero": {
+        "heading": "Get in Touch",
+        "subheading": "We'd love to hear from you."
+      },
+      "intro": "Whether you'd like to get involved, attend an event, support our work, or simply find out more — drop us a message.",
+      "form": {
+        "fields": [
+          { "id": "name",    "label": "Your Name",     "type": "text",     "required": true  },
+          { "id": "email",   "label": "Email Address", "type": "email",    "required": true  },
+          { "id": "subject", "label": "Subject",       "type": "text",     "required": false },
+          { "id": "message", "label": "Message",       "type": "textarea", "required": true  }
+        ],
+        "submit_label": "Send Message",
+        "success_message": "Thank you — we'll be in touch soon.",
+        "formspree_endpoint": ""
+      },
+      "details": {
+        "area": "Santa Lucija, Gozo, Malta",
+        "email": "taklula.gozo@gmail.com"
+      }
+    }
+
+  },
+
+  "footer": {
+    "tagline": "Celebrating Santa Lucija since 2005.",
+    "registration": "Fondazzjoni ta' Klula — VO/0420",
+    "links": [
+      { "label": "About",      "href": "about.html" },
+      { "label": "Events",     "href": "events.html" },
+      { "label": "Contact",    "href": "contact.html" }
+    ],
+    "copyright": "© 2026 Fondazzjoni ta' Klula. All rights reserved."
+  }
+}
