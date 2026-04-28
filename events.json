@@ -1,0 +1,24 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Wine Festival 2026",
+    "date": "2026-06-14",
+    "time": "18:00",
+    "location": "Santa Lucija Village Square",
+    "description": "Our annual celebration of Gozitan wine and local produce. Free entry, open to all. Join us for an evening of great wine, local food, music, and good company in the heart of Santa Lucija.",
+    "tag": "Festival",
+    "free": true,
+    "poster": "images/event-winefestival.jpg"
+  },
+  {
+    "id": "evt-002",
+    "title": "Ġimgħa Stejjer — Literary Evening",
+    "date": "2026-07-03",
+    "time": "19:30",
+    "location": "Venue TBC, Santa Lucija",
+    "description": "Our quarterly literary evening in partnership with Inizjamed — an evening of poetry, prose, and good conversation. All languages welcome. Venue to be confirmed closer to the date.",
+    "tag": "Arts",
+    "free": true,
+    "poster": "images/event-gimghastejjer-may.jpg"
+  }
+]
