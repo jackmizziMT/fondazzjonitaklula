@@ -270,7 +270,7 @@
       color: var(--cool-soft);
       margin-bottom: 24px;
       opacity: 0;
-      animation: enterUp 0.6s 0.4s var(--ease) forwards;
+      animation: enterUp 0.6s 0.4s cubic-bezier(0.4,0,0.2,1) both;
     }
     .hero-eyebrow::before {
       content: '';
@@ -291,7 +291,7 @@
     .hero-headline .ln span {
       display: block;
       opacity: 0;
-      animation: enterUp 1s var(--ease) forwards;
+      animation: enterUp 1s cubic-bezier(0.4,0,0.2,1) both;
     }
     .hero-headline .ln:nth-child(1) span { animation-delay: 0.5s; }
     .hero-headline .ln:nth-child(2) span {
@@ -313,7 +313,7 @@
       margin-top: 28px;
       margin-bottom: 36px;
       opacity: 0;
-      animation: enterUp 0.7s 1.3s var(--ease) forwards;
+      animation: enterUp 0.7s 1.3s cubic-bezier(0.4,0,0.2,1) both;
     }
 
     .btn-fill {
@@ -354,7 +354,7 @@
       align-items: center;
       gap: 10px;
       opacity: 0;
-      animation: fadeIn 1s 2s var(--ease) forwards;
+      animation: fadeIn 1s 2s cubic-bezier(0.4,0,0.2,1) both;
     }
     .hero-scroll span {
       font-size: 0.6rem;
@@ -400,7 +400,7 @@
       margin-top: 24px;
       max-width: 420px;
       opacity: 0;
-      animation: enterUp 0.7s 1.1s var(--ease) forwards;
+      animation: enterUp 0.7s 1.1s cubic-bezier(0.4,0,0.2,1) both;
     }
     .hero-mission strong {
       font-style: normal;
@@ -1236,6 +1236,11 @@
       .lb-next { right: 8px; }
       .lb-thumbs { display: none; }
     }
+  
+    /* Animation failsafe */
+    .hero-headline .ln span { animation-fill-mode: both !important; }
+    .hero-mission { animation-fill-mode: both !important; }
+    .hero-desc    { animation-fill-mode: both !important; }
   </style>
 </head>
 <body>
@@ -1757,6 +1762,18 @@
     // Expose globally so card click handlers can call it
     window.__openLightbox = openLb;
   })();
+
+  // Failsafe: if animations haven't fired after 3s, force hero text visible
+  setTimeout(function() {
+    var hero = document.querySelector('.hero-headline');
+    if (hero && getComputedStyle(hero.querySelector('.ln span')).opacity === '0') {
+      document.querySelectorAll('.hero-headline .ln span, .hero-mission, .hero-desc, .hero-scroll').forEach(function(el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
+      });
+    }
+  }, 3000);
 </script>
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" role="dialog" aria-modal="true">
