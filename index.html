@@ -987,7 +987,267 @@
     @media (max-width: 600px) {
       .ev-overlay-panel { width: 100vw; }
       .ev-panel-body { padding: 28px 24px 48px; }
-    }</style>
+    }
+    /* ─── EDEN RECOGNITION ─── */
+    .eden-sec {
+      background: var(--white);
+      padding: 80px 52px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .eden-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .eden-logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .eden-logo-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #006B3C;
+      text-align: center;
+    }
+    .eden-divider {
+      width: 1px;
+      height: 80px;
+      background: var(--border);
+    }
+    .eden-text .sec-label { margin-bottom: 12px; }
+    .eden-text h2 {
+      font-family: var(--fd);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .eden-text h2 em { font-style: italic; color: var(--mid); }
+    .eden-text p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--mid);
+      max-width: 560px;
+    }
+    .eden-badge {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 24px 32px;
+      background: #F0FAF5;
+      border: 1px solid #B8DEC9;
+    }
+    .eden-badge .eb-year {
+      font-family: var(--fd);
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #006B3C;
+    }
+    .eden-badge .eb-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #006B3C;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+    .eden-badge .eb-country {
+      font-size: 0.72rem;
+      color: #006B3C;
+      margin-top: 8px;
+      opacity: 0.65;
+    }
+    @media (max-width: 900px) {
+      .eden-inner { grid-template-columns: 1fr; gap: 28px; }
+      .eden-divider { display: none; }
+      .eden-logo-wrap { flex-direction: row; }
+      .eden-badge { align-self: flex-start; }
+    }
+  
+    /* ─── PAST EVENTS TEASER ─── */
+    .past-teaser {
+      background: var(--cream);
+      padding: 80px 52px;
+      border-top: 1px solid var(--border);
+    }
+    .past-teaser-inner { max-width: 1160px; margin: 0 auto; }
+    .past-teaser-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 36px;
+    }
+    .past-teaser-header h2 {
+      font-family: var(--fd);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 12px;
+    }
+    .past-teaser-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    .past-teaser-tile {
+      position: relative;
+      overflow: hidden;
+      background: var(--sand);
+    }
+    .past-teaser-tile-img {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden;
+    }
+    .past-teaser-tile-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s var(--ease); filter: saturate(0.85);
+    }
+    .past-teaser-tile:hover .past-teaser-tile-img img {
+      transform: scale(1.05); filter: saturate(1);
+    }
+    .past-teaser-tile-ph {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--sand);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .past-teaser-tile-ph svg { opacity: 0.2; }
+    .past-teaser-tile-info {
+      padding: 14px 16px;
+      background: var(--white);
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .past-teaser-tile:hover .past-teaser-tile-info { border-color: var(--warm); }
+    .past-teaser-tile-year {
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--cool);
+      margin-bottom: 3px;
+    }
+    .past-teaser-tile-title {
+      font-family: var(--fd); font-size: 1rem;
+      font-weight: 600; color: var(--text); line-height: 1.1;
+    }
+    @media (max-width: 700px) {
+      .past-teaser { padding: 64px 24px; }
+      .past-teaser-grid { grid-template-columns: 1fr 1fr; }
+    }
+  
+    /* ─── LIGHTBOX ─── */
+    .lb {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(10,8,6,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lb.open { opacity: 1; pointer-events: all; }
+
+    .lb-img-wrap {
+      position: relative;
+      max-width: 90vw; max-height: 85vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-img-wrap img {
+      max-width: 90vw; max-height: 82vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 2px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      transition: opacity 0.2s;
+    }
+    .lb-img-wrap img.loading { opacity: 0.3; }
+
+    /* Nav arrows */
+    .lb-prev, .lb-next {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2;
+    }
+    .lb-prev { left: 24px; }
+    .lb-next { right: 24px; }
+    .lb-prev:hover { background: rgba(255,255,255,0.2); transform: translateY(-50%) translateX(-2px); }
+    .lb-next:hover { background: rgba(255,255,255,0.2); transform: translateY(-50%) translateX(2px); }
+    .lb-prev.hidden, .lb-next.hidden { opacity: 0; pointer-events: none; }
+
+    /* Close button */
+    .lb-close {
+      position: fixed;
+      top: 20px; right: 24px;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.22); }
+
+    /* Counter + caption */
+    .lb-meta {
+      position: fixed;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      z-index: 2;
+    }
+    .lb-caption {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem; font-style: italic;
+      color: rgba(255,255,255,0.75);
+    }
+    .lb-counter {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* Thumbnail strip */
+    .lb-thumbs {
+      position: fixed;
+      bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 6px;
+      max-width: 90vw; overflow-x: auto;
+      padding: 4px;
+    }
+    .lb-thumb {
+      width: 52px; height: 40px; flex-shrink: 0;
+      overflow: hidden; cursor: pointer;
+      opacity: 0.45; border: 2px solid transparent;
+      transition: opacity 0.2s, border-color 0.2s;
+      border-radius: 2px;
+    }
+    .lb-thumb img { width:100%; height:100%; object-fit:cover; }
+    .lb-thumb.active { opacity: 1; border-color: rgba(255,255,255,0.7); }
+    .lb-thumb:hover { opacity: 0.8; }
+
+    @media (max-width: 700px) {
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+      .lb-thumbs { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -1071,6 +1331,48 @@
   </div>
 </section>
 
+<!-- EDEN RECOGNITION -->
+<section class="eden-sec">
+  <div class="eden-inner">
+    <div class="eden-logo-wrap">
+      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="EDEN Award">
+  <!-- Star/flower motif -->
+  <circle cx="36" cy="36" r="34" fill="#006B3C" opacity="0.08"/>
+  <circle cx="36" cy="36" r="28" fill="none" stroke="#006B3C" stroke-width="1.5" opacity="0.4"/>
+  <!-- EU stars ring -->
+  <g fill="#006B3C" opacity="0.7">
+    <circle cx="36" cy="10" r="2"/>
+    <circle cx="51" cy="15" r="2"/>
+    <circle cx="60" cy="28" r="2"/>
+    <circle cx="62" cy="44" r="2"/>
+    <circle cx="53" cy="57" r="2"/>
+    <circle cx="39" cy="63" r="2"/>
+    <circle cx="23" cy="62" r="2"/>
+    <circle cx="11" cy="53" r="2"/>
+    <circle cx="8"  cy="39" r="2"/>
+    <circle cx="13" cy="24" r="2"/>
+    <circle cx="24" cy="13" r="2"/>
+  </g>
+  <!-- Leaf -->
+  <path d="M36 20 C28 26 24 34 28 44 C32 38 38 32 44 28 C40 24 38 22 36 20Z" fill="#006B3C" opacity="0.85"/>
+  <path d="M36 20 C44 26 48 34 44 44 C40 38 34 32 28 28 C32 24 34 22 36 20Z" fill="#006B3C" opacity="0.55"/>
+</svg>
+      <div class="eden-logo-label">EDEN<br>Award</div>
+    </div>
+    <div class="eden-divider"></div>
+    <div class="eden-text">
+      <div class="sec-label">Recognition</div>
+      <h2>European Destination<br><em>of Excellence</em></h2>
+      <p>Santa Luċija was awarded the <strong>European Destination of Excellence (EDEN)</strong> by the European Commission in 2008 — one of only eight destinations ever selected across Malta and Gozo. The award recognised the village's outstanding commitment to sustainable tourism and its rich local intangible heritage. This distinction underpins the Fondazzjoni's work and our relationship with European funding institutions.</p>
+    </div>
+    <div class="eden-badge">
+      <div class="eb-year">2008</div>
+      <div class="eb-label">Winner</div>
+      <div class="eb-country">Malta &amp; Gozo</div>
+    </div>
+  </div>
+</section>
+
 <!-- EVENTS — rendered from events.json -->
 <section class="events">
   <div class="events-inner">
@@ -1129,6 +1431,26 @@
           <p>A candlelit feast-day gathering with the children's candle tradition at its heart.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PAST EVENTS TEASER -->
+<section class="past-teaser">
+  <div class="past-teaser-inner">
+    <div class="past-teaser-header">
+      <div>
+        <div class="sec-label">Track Record</div>
+        <h2>From past events</h2>
+      </div>
+      <a href="events.html#past" class="btn-arrow">
+        See all past events
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="past-teaser-grid" id="past-teaser-grid">
+      <!-- Populated by JS -->
     </div>
   </div>
 </section>
@@ -1360,6 +1682,140 @@
   window._openOv=openOv;
   window._closeOv=closeOv;
 })();
+
+
+  // ── Past events teaser (homepage) ──
+  (function() {
+    var ph = '<div class="past-teaser-tile-ph"><svg width="36" height="36" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#9E958C" stroke-width="1.5"/><circle cx="14" cy="17" r="3" stroke="#9E958C" stroke-width="1.5"/><path d="M4 26l8-6 6 5 5-4 9 7" stroke="#9E958C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+    function renderTeaser(events) {
+      var grid = document.getElementById('past-teaser-grid');
+      if (!grid) return;
+      var top = events.slice(0, 3);
+      if (!top.length) { grid.parentElement.parentElement.style.display='none'; return; }
+      grid.innerHTML = top.map(function(ev) {
+        var hasCover = ev.photos && ev.photos.length;
+        var img = hasCover
+          ? '<div class="past-teaser-tile-img"><img src="'+ev.folder+'/'+ev.photos[0]+'" alt="'+ev.title+'" loading="lazy"/></div>'
+          : ph;
+        var cursor = hasCover ? ' style="cursor:pointer;"' : '';
+        return '<div class="past-teaser-tile" data-past-id="'+ev.id+'"'+cursor+'>'+img+'<div class="past-teaser-tile-info"><div class="past-teaser-tile-year">'+ev.year+'</div><div class="past-teaser-tile-title">'+ev.title+'</div></div></div>';
+      }).join('');
+    }
+    var _pastData = [];
+    function renderAndWire(events) {
+      _pastData = events;
+      renderTeaser(events);
+      // Wire clicks after render
+      setTimeout(function() {
+        var grid = document.getElementById('past-teaser-grid');
+        if (!grid) return;
+        grid.addEventListener('click', function(e) {
+          var tile = e.target.closest('[data-past-id]');
+          if (!tile) return;
+          var id = tile.getAttribute('data-past-id');
+          var ev = _pastData.find(function(x){ return x.id === id; });
+          if (!ev || !ev.photos || !ev.photos.length) return;
+          var photos = ev.photos.map(function(f) {
+            return { src: ev.folder+'/'+f, caption: ev.title+' — '+ev.year };
+          });
+          if (window.__openLightbox) window.__openLightbox(photos, 0);
+        });
+      }, 100);
+    }
+    fetch('past-events.json').then(function(r){return r.json();}).then(renderAndWire).catch(function(){renderAndWire([]);});
+  })();
+
+  // ── Lightbox ──
+  (function() {
+    var _photos = [], _idx = 0;
+    var lb       = document.getElementById('lb');
+    var lbImg    = document.getElementById('lb-img');
+    var lbPrev   = document.getElementById('lb-prev');
+    var lbNext   = document.getElementById('lb-next');
+    var lbClose  = document.getElementById('lb-close');
+    var lbThumbs = document.getElementById('lb-thumbs');
+    var lbCaption= document.getElementById('lb-caption');
+    var lbCounter= document.getElementById('lb-counter');
+
+    function show(idx) {
+      if (!_photos.length) return;
+      _idx = (idx + _photos.length) % _photos.length;
+      var p = _photos[_idx];
+      lbImg.classList.add('loading');
+      var tmp = new Image();
+      tmp.onload = function() { lbImg.src = p.src; lbImg.classList.remove('loading'); };
+      tmp.src = p.src;
+      lbCaption.textContent = p.caption || '';
+      lbCounter.textContent = (_idx + 1) + ' / ' + _photos.length;
+      lbPrev.classList.toggle('hidden', _photos.length <= 1);
+      lbNext.classList.toggle('hidden', _photos.length <= 1);
+      // Thumbnails
+      if (lbThumbs) {
+        Array.from(lbThumbs.querySelectorAll('.lb-thumb')).forEach(function(t, i) {
+          t.classList.toggle('active', i === _idx);
+        });
+      }
+    }
+
+    function openLb(photos, startIdx) {
+      _photos = photos;
+      // Build thumbnails
+      if (lbThumbs) {
+        lbThumbs.innerHTML = photos.map(function(p, i) {
+          return '<div class="lb-thumb'+(i===startIdx?' active':'')+'" data-i="'+i+'"><img src="'+p.src+'" alt="" loading="lazy"/></div>';
+        }).join('');
+        lbThumbs.querySelectorAll('.lb-thumb').forEach(function(t) {
+          t.addEventListener('click', function() { show(parseInt(t.dataset.i)); });
+        });
+      }
+      show(startIdx || 0);
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (lbClose) lbClose.addEventListener('click', closeLb);
+    if (lbPrev)  lbPrev.addEventListener('click', function() { show(_idx - 1); });
+    if (lbNext)  lbNext.addEventListener('click', function() { show(_idx + 1); });
+    if (lb)      lb.addEventListener('click', function(e) { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e) {
+      if (!lb || !lb.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  show(_idx - 1);
+      if (e.key === 'ArrowRight') show(_idx + 1);
+      if (e.key === 'Escape')     closeLb();
+    });
+
+    // Expose globally so card click handlers can call it
+    window.__openLightbox = openLb;
+  })();
 </script>
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lb-close" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <button class="lb-prev" id="lb-prev" aria-label="Previous">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt=""/></div>
+  <button class="lb-next" id="lb-next" aria-label="Next">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+  <div class="lb-meta">
+    <div class="lb-caption" id="lb-caption"></div>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+</div>
 </body>
 </html>
