@@ -1241,6 +1241,28 @@
     .hero-headline .ln span { animation-fill-mode: both !important; }
     .hero-mission { animation-fill-mode: both !important; }
     .hero-desc    { animation-fill-mode: both !important; }
+  
+    /* ─── Activities prose layout ─── */
+    .activities-prose { max-width: 1160px; }
+    .act-lead {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.82;
+      color: var(--mid); max-width: 780px; margin-bottom: 48px;
+    }
+    .act-pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 36px; margin-bottom: 40px;
+    }
+    .act-pillar { padding: 0; }
+    .act-pillar-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .act-pillar h3 {
+      font-family: var(--fd); font-size: 1.25rem; font-weight: 600;
+      color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .act-pillar p { font-size: 0.9rem; font-weight: 300; color: var(--mid); line-height: 1.72; }
+    .act-cta-line { margin-top: 8px; }
+    @media (max-width: 700px) {
+      .act-pillars { grid-template-columns: 1fr; gap: 28px; }
+    }
   </style>
 </head>
 <body>
@@ -1288,7 +1310,7 @@
       <span class="ln"><span>Alive.</span></span>
     </h1>
     <p class="hero-mission">Heritage, arts, and community — <strong>rooted in Santa Lucija</strong>, open to everyone.</p>
-    <p class="hero-desc">We document, celebrate, and share the culture of a village that deserves to be known.</p>
+    <p class="hero-desc">Heritage, arts, and community — rooted in Santa Lucija, reaching across Gozo.</p>
 
   </div>
 

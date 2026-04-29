@@ -947,16 +947,16 @@
     .story-body p:last-child { margin-bottom: 0; }
 
     /* Objectives */
-    .obj-sec { background: var(--text); padding: 96px 52px; }
+    .obj-sec { background: var(--cream); padding: 96px 52px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .obj-inner { max-width: 1160px; margin: 0 auto; }
     .obj-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
-    .obj-header h2 { font-family: var(--fd); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; letter-spacing: -0.02em; color: var(--white); margin-top: 16px; line-height: 1.05; }
-    .obj-header p { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.75; }
+    .obj-header h2 { font-family: var(--fd); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-top: 16px; line-height: 1.05; }
+    .obj-header p { font-size: 0.95rem; font-weight: 300; color: var(--mid); line-height: 1.75; }
     .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .obj-item { padding: 36px 40px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); transition: background 0.2s; }
-    .obj-item:hover { background: rgba(255,255,255,0.07); }
+    .obj-item { padding: 36px 40px; background: var(--white); border: 1px solid var(--border); transition: background 0.2s; }
+    .obj-item:hover { background: var(--sand); }
     .obj-num { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; color: var(--warm); margin-bottom: 12px; }
-    .obj-item p { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.65; }
+    .obj-item p { font-size: 0.92rem; font-weight: 300; color: var(--mid); line-height: 1.65; }
 
     /* Committee */
     .committee-sec { background: var(--cream); padding: 96px 52px; }
@@ -1014,21 +1014,29 @@
       <h2>How it all<br><em>began</em></h2>
     </div>
     <div class="story-body">
-      <p>Fondazzjoni ta' Klula — VO/0420 — was founded by a group of Santa Lucija residents committed to ensuring that the village's heritage is not lost to time. The name comes from Klula, the affectionate local name for the village.</p>
-      <p>We are a registered voluntary organisation operating under the Commissioner for Voluntary Organisations. Our work spans cultural events, heritage documentation, oral history, arts programming, and community engagement.</p>
-      <p>What began as a commitment to one village has grown into something broader: a belief that Gozitan culture, in all its forms, deserves to be documented, celebrated, and shared — with everyone who's curious enough to look.</p>
+      <p>Fondazzjoni ta' Klula — VO/0420 — was founded in 2005 by a group of Santa Lucija residents committed to ensuring that the village's heritage is not lost to time and to promote its history, culture, traditions and customs. The name comes from <em>Ta' Klula</em>, one of the oldest parts of this village.</p>
+      <p>Since then it has evolved and is now led by a committee of residents and others who love the village, and Gozo in general. We are a registered voluntary organisation operating under the Commissioner for Voluntary Organisations.</p>
+      <p>What began as a commitment to one village has grown into something broader: a belief that Gozitan culture, in all its forms, deserves to be documented, celebrated, and shared. With everyone who's curious enough to look.</p>
     </div>
   </div>
 </section>
 
+<section style="background:var(--white);padding:0 52px 72px;">
+  <div style="max-width:1160px;margin:0 auto;padding-top:48px;border-top:1px solid var(--border);">
+    <div class="sec-label">Our Reach</div>
+    <p style="font-family:var(--fd);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:600;color:var(--text);line-height:1.2;letter-spacing:-0.01em;max-width:700px;">
+      Although rooted in Santa Lucija, the Fondazzjoni looks at <em style="color:var(--mid);">Gozo as a whole</em> — collaborating with organisations, artists, and communities across the island to celebrate and safeguard the broader Gozitan cultural identity.
+    </p>
+  </div>
+</section>
 <section class="obj-sec">
   <div class="obj-inner">
     <div class="obj-header">
       <div>
-        <div class="sec-label" style="color:rgba(255,255,255,0.3);">What We Stand For</div>
+        <div class="sec-label">What We Stand For</div>
         <h2>Our objectives</h2>
       </div>
-      <p>Five principles guide everything the Fondazzjoni does — from a single literary evening to a long-term heritage documentation project.</p>
+      <p>These principles guide everything the Fondazzjoni does.</p>
     </div>
     <div class="obj-grid">
       <div class="obj-item"><div class="obj-num">01</div><p>Safeguarding the tangible and intangible cultural heritage of Santa Lucija</p></div>
