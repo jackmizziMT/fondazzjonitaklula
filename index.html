@@ -316,13 +316,6 @@
       animation: enterUp 0.7s 1.3s var(--ease) forwards;
     }
 
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      opacity: 0;
-      animation: enterUp 0.7s 1.5s var(--ease) forwards;
-    }
     .btn-fill {
       display: inline-flex;
       align-items: center;
@@ -352,8 +345,9 @@
     /* Scroll indicator — bottom right */
     .hero-scroll {
       position: absolute;
-      right: 52px;
-      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 36px;
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -370,26 +364,20 @@
       color: rgba(255,255,255,0.3);
       writing-mode: vertical-rl;
     }
-    .hero-scroll-bar {
-      width: 1px;
-      height: 56px;
-      background: rgba(255,255,255,0.15);
-      position: relative;
-      overflow: hidden;
+    .hero-scroll-chevron {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 3px;
     }
-    .hero-scroll-bar::after {
-      content: '';
-      position: absolute;
-      top: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--cool-soft);
-      animation: scrollBar 2.2s 2.5s ease-in-out infinite;
+    .hero-scroll-chevron svg {
+      animation: chevronBounce 1.8s ease-in-out infinite;
+      color: rgba(255,255,255,0.45);
     }
-    @keyframes scrollBar {
-      0%   { top: -100%; }
-      50%  { top: 100%; }
-      100% { top: 100%; }
+    .hero-scroll-chevron svg:nth-child(2) { animation-delay: 0.18s; opacity: 0.6; }
+    .hero-scroll-chevron svg:nth-child(3) { animation-delay: 0.36s; opacity: 0.3; }
+    @keyframes chevronBounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }}
     }
 
     @keyframes enterUp {
@@ -1296,18 +1284,16 @@
     </h1>
     <p class="hero-mission">Heritage, arts, and community — <strong>rooted in Santa Lucija</strong>, open to everyone.</p>
     <p class="hero-desc">We document, celebrate, and share the culture of a village that deserves to be known.</p>
-    <div class="hero-actions">
-      <a href="what-we-do.html" class="btn-fill">
-        What We Do
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="events.html" class="btn-ghost-white">What's On</a>
-    </div>
+
   </div>
 
-  <div class="hero-scroll">
+  <div class="hero-scroll" onclick="document.querySelector('.about').scrollIntoView({behavior:'smooth'})">
     <span>Scroll</span>
-    <div class="hero-scroll-bar"></div>
+    <div class="hero-scroll-chevron">
+      <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
   </div>
 </section>
 
@@ -1336,7 +1322,7 @@
 <section class="eden-sec">
   <div class="eden-inner">
     <div class="eden-logo-wrap">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAoCAYAAADNCsXSAAANGklEQVR4nO2af3CUx3nHn919f9177510pztOAYEEskCRhhJSG7vll2QbGRFnaGPrTOzE/JjabaEJE0+nSfMHp5uMO+m4HremuKN4RoyxcZkT2EImDJA4kkMHg6sYDJZkA3ZAAv1Gut/vz93tH+hsxe146iToOPDnr7ude2+f3e/7PM/uswtwi8A5R5FIBOfbji/5ki8BuO6RAAAvvPDCrH379n19etvthpBvA/5Q2traMADQqqqqtQAwDwDe7erqIgDg5Neymafgc0wwGESccxSPx/88mUwiAEBdXV35NisvFLyY9fX1DkKIK4oyXlJSMhsAeG1tLc+3XfmgkHMLikQiCAC899xzz4+Gh4d/KIoiUErXbty48WgkEhGi0ehtFWoL1jM7OztJNBplS5Ys+Y5t2wtcLtc2l8t1qri4+Kecc9zb23vbeWehiom6uroY5xyLorghk8msxBj/jWEYZZzzrx0+fPi+trY2GovFSL4NnUkKdTXLAYAAAE0kEgOWZS03DKOUUgqGYQAhZCMA/CLPNs44heqZMHv2bIQQ4qIontE0LVVVVQWBQICappnMZrN3AACEw2GWbztnkoITM1eye/LJJykAQCgUOs8YGxgdHf1ZMBh8xldUdD6Tybw+9VtyOxUQCk7MaDT6O96m67ooYJxddMeiX5qmeRUE4YrL7VY557iurg4QQrfNQqigxIzFYuStt95aBgDQ1taGAAAIIQ4RBG1odOjZkZGReRIRFtqmaSOEGADAiRMnXJ2dnYW6NvhCFISYudAqy/L8wcHBf9i9e3dxT08PiUQimDGmUYDfYIwPzC6dnUCOM3TXVxf/9Yf//d636+vrnXg8/m8TExOrAK6/DPkdyY2loN5Yx3EUQRAqQ6GQtnnz5jgAQPuB9pSiykm3phWZ6eysIlVL/vbiR8ErH136j1+3HexJAcxVVfUhAPhVT0/PLZ0/C0LM5uZmiEaj4PV6kW3bXxsbG/v7l19+2UAI4cnk5COKrfgt0/zn5ESyAnMesBD7bdowkDHBn8OGHHKrbm++xzATFIyYAACXL1+Wi4qKdgSDwQuEEMc0zRLO+YV0On3O1M1Ziqqs5MDfshy6yyGOnnEsTxFy+Sil9wEAutVrtjd9zuSco9raWiEWixFCSMjn85VlMpmLExMTBud8jWmaQVmWHcdxKlW3ujAUKn2ooqpibUNjA9+6desR27arKaWlAMAnJydxJBLBuVsJnZ2dQmdnp3Cr3FC4aXJIJBLBtbW1qKenhzc3N/PPbimOHDkyN5vNPv3xxx+/TSm1PR7PnbIsD4qiWOTxeO6glGZlWc4kEolhx3HExYsXVwwPD/96fHz8T+fMmbOZMfaThoaGHZ/Xf3NzM29ubkYA/3sLVAjkXcyOjg7V7/eTFStWpKa3t7S0iD6fjwWDwa+OjIx8GyH0ESFkGWPs+9XV1QsQQvbOnTv7t23btmDJkiUfTnsUwfVyH5w6dWrV2NiYqet6ezweD7jd7u+lUilLlmWOMS5xuVzVmqZBOp1+samp6dRMjvtGkDcxc5WZ/fv3r543b95i0zRRNpuNE0JOu1yuaytWrBgEADh48OBaVVW39Pb2fre8vDxi27bLtu07McZHdV2/GAwGG8fHx7sYYwnGmMuyLNnn8wU9Hs93CCHXLMtK67p+AABaM5nMDzweT8vQ0BDTNO1biqK8KssyxOPxn2QymZ8tWrQIBQIBCWMsL1269IPcXrVQmJFcwTlHsVjsd0prCCGOEOJNTU1dd999905d1/dxzvsBYPvg4ODzBw4c2P/iiy/+nW3b9xFCurdv326qquouLi4WTdM8VlJSspMQco0x9t6WLVt2S5LUVFpayrZu3dpaWVnZZppmT2NjY51hGG2JRGKAEMJVVV0mCEJdWVnZo16vdxlCyBYEocfj8TwiCMJHo6Oj/RcvXvz50NBQ5NixYzUAn+5xC4G8h9lcrpqeIznnQkdHR42u6/dSSh+xLKuKc35eUZR2TdN+09fX566urj41NjZWY5rmnCVLlrw/MjJyWtf1FkmSvi/L8gpJklZZlvWSy+V6ua+vr0XTtD22bV8JBoM/oJS+Pjw8/PDChQt3PfDAA8Fdu3Y9V1pauj2dTv9i1qxZP1y3bt1pzjkqtFLgDX3rcp544MCBsvb29qdbW1vnfvZ+azQaZVOThiKRCI7FYgQh5Kxfv/7shg0b/vXRRx9dIctyt9/v/7N0Ov23R48ePWOaprJ+/fqRdDrdm8lkhufOnTvqdrtBluVj4XDY0jTtmiAIf4UQel6SpGfj8fgwYxRkRSwbuHLpH8PhMHUcR8pkMpkTJ07MCwQCdzmO8/CmTZsa1q1bd7q7uztQaEIC3GAxp27OQTqdrmCM/TiZTN45NUn/V788Go2ycDhMAQBxzlFnZ6eAEGKPPfbYWq/X+xeqqp4MhUJ+y7IcAECGYRh+v3/7yZMnWzjnq0zTbHr11Veftm3bb5rmJY/Hc7Wuru51SZJUxhwwLZ2rbpdw6FD7Kp/PRyillymlj3g8nvJQKPTevn37Nrz22msdAwMDDQCFV/6bkXwwdWAMmqb9f992jhDi9fX1DgDAjh078L333nuQUrpP0zSPoigUALjP58sahrFyfHz8wUuXLnmuXbu2Utf1H9u2fZfb7a5ijIU450hRFEIEAqZh2LIk/YlD6TNFRUWT1dXVvySE9CKEJgcGBj6UJOk/NU375tDQUN+Nm40bxw0Vs6mpiQEAYIx7NU1bX1FR8TYAQHNzM/0Cf8MBPvEShTHGRVFEAADPPPMM1jQtXlJSwgOBwM/Ly8vniKKYYoy9JsvygGEYxxFC3HFMoJSCIIhgGAY3DfMKpdQaHR01li9ffsgwjNMlJSVYFMXnCCGrR0ZGzgEATEWJguGGlvNyeeeJJ56YAICOz7Z/ATAAcNM0OQCAYRg2AMDFixdBVVXiOA5KJBKOz+cjmqZxVVUrZFn+um3bLQAAoqggjDEAcGyaJtiOvWb2V2afN039bc452r17dwZj/P6mTZueypn4Bw49L8zY1qSzs1P4fU/9o9GoEw6HKUJIyGazTk1NzTc55/jBBx8knHNgjAFCCJumiVKpFGeMYVEUUa4/27YtAADGOJckCU1OTCYptX/a2NjYgRDipmnuliRpcyQSEVpaWkSYigaFxoyImct/X9QjOecYAKClpaXppZdeesq27VFCCFIUZT5CiB06dCjLOecAABhjoJSCZVkC5zxuGEaGUgqcc+Tz+eYihDlCGHJOt2bNmgTA9cPrysrKZbIso2g06gwODhZUaJ3OTbUhznlw7nNbW5sci8WIYRjLMcZb/H7/QgBghmF82N3d/Y3jx49vAwAFABjnnFNKOWPMFYvF+rLZbJ+maeUIIS5JEkJAEKMAwAXgHOuHDx/e+MYbb8xJp9MVqVRqJ8bYyOfY/xjcVGJOX8EihHg4HNbD4TAVRXHUtm0YHh6+R1EUg3OeKSoqOquq6nGfz5fCGGNKKWGMoWQyCa2trenJyUliWZba398/Z+nSpR2yLI8IgogRQuA4TspxnBqPx3NfQ0ND38TEhK6qKgH49LitELkpzjMjkQiORqP8nXfemQ8AP0qlUl7HcVyEkKuapnmGhoaWjY6OXgUAvHr16kGv19tcVVVl7t27V9Q0rVwUxZOBQMDPGONFRUVf2bt3b2M2m/0vTdNWvvnmm7MMw5j0er3H/X7/w/F4nAOAoCjKBy6Xq5JzTlpbW8nY2BgAfCnmHwtu23aJ4zgPUUq/yxhDABDgnLsdx/mGy+VyI4QS586dY263m3d3d4vxeHzRxMTE4Ww2+/qCBQt6dV0HzjlJpVKuefPm7aGUvvLKK6+cqampkcrLy0O2ba+ybXtWNpudxNeXt1mEEG1pabGvfy1s8irmVF7EwWAQTZ0fVmqaFlm9evXh6b/bs2dPraZp5uOPP/7U9PaTJ09e7u/v33XhwoXLmzZt+uBzurIAIL1nz56e0tLSF2RZfra4uJilUil29OjRqK7rbsMwCnIFO52baj916tSpp9xu978Hg0HpzJkzjxNC/hJjHDIMw5RleY8sy2DbtkDIJ1U2l23b7kQiEU8mk7+qrq6+cPbs2VJCiIsxxl0uF5YkiYZCodXFxcWzx8bGFtm2/S+NjY1vT4V2duzYsTsB4FuiKD5fX18/XIgF9hx5ETM3Yfv371/g8/mqPR6PkEwmg4yxVZzzIUrptrKyMi2RSIDjOIAxBlmWPzUaIUAIgWVZoGkanD9//v1MJnPS7/dfHRkZeRNj7LVtmyuKgjweD9c0rbikpMQ1f/78I4FA4GpOSJh2kH0rkNcwa5pmEmPcbxiGdf/993e0t7dfVhTle+Pj4/80NDSkAwBijAEhBAEA1XX9k2cZYyBJElBKEUIoRQgZf/fdd49Go9HP3WJMExIAgEciEVxXV4fr6upooXpkjpsqzAJ86rW/7/O5u0TT24LBIAIAuBUE+zz+B/l8eldBWqdxAAAAAElFTkSuQmCC" alt="European Destinations of Excellence" />
+      <img src="images/eden-award.jpg" alt="European Destinations of Excellence" />
     </div>
     <div class="eden-vdivider"></div>
     <div class="eden-text">
