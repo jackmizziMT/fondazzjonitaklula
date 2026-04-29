@@ -1,0 +1,23 @@
+[
+  {
+    "id": "wine-festival-2024",
+    "title": "Wine Festival",
+    "year": "2024",
+    "folder": "images/past-events/wine-festival-2024",
+    "photos": ["cover.jpg"]
+  },
+  {
+    "id": "gimgha-stejjer-2024",
+    "title": "Ġimgħa Stejjer",
+    "year": "2024",
+    "folder": "images/past-events/gimgha-stejjer-2024",
+    "photos": ["cover.jpg"]
+  },
+  {
+    "id": "luminary-2024",
+    "title": "Luminary Evening",
+    "year": "2024",
+    "folder": "images/past-events/luminary-2024",
+    "photos": ["cover.jpg"]
+  }
+]
