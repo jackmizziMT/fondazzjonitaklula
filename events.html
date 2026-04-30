@@ -811,7 +811,7 @@
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 56px;
       padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
       margin-bottom: 28px;
     }
     .f-name {
@@ -825,41 +825,37 @@
       font-family: var(--fd);
       font-style: italic;
       font-size: 0.92rem;
-      color: var(--warm-soft);
+      color: var(--warm-soft, #E87050);
       margin-bottom: 20px;
     }
     .f-reg {
-      font-size: 0.66rem;
+      font-size: 0.68rem;
       letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.35);
     }
     .f-col h4 {
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.4);
       margin-bottom: 16px;
     }
     .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .f-col a { font-size: 0.86rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .f-col a { font-size: 0.9rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
     .f-col a:hover { color: var(--white); }
-    .f-col p { font-size: 0.86rem; line-height: 1.8; color: rgba(255,255,255,0.42); }
+    .f-col p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); }
     .footer-bottom {
       max-width: 1160px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.2);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
     }
-    .f-social a {
-      color: rgba(255,255,255,0.22);
-      margin-left: 14px;
-      transition: color 0.2s;
-    }
-    .f-social a:hover { color: var(--warm-soft); }
+    .f-social a { color: rgba(255,255,255,0.4); transition: color 0.2s; margin-left: 14px; }
+    .f-social a:hover { color: var(--warm-soft, #E87050); }
 
     /* ────────────────────────────────────
        RESPONSIVE
@@ -1358,16 +1354,14 @@
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="f-col">
       <h4>Contact</h4>
-      <p>Santa Lucija, Gozo, Malta<br>
-        <a href="mailto:taklula.gozo@gmail.com">taklula.gozo@gmail.com</a><br><br>
-        <a href="https://www.facebook.com/taklula" target="_blank" rel="noopener">Facebook</a>
-      </p>
+      <p>Santa Lucija, Gozo, Malta</p>
+      <p><a href="mailto:taklula.gozo@gmail.com">taklula.gozo@gmail.com</a></p>
+      <p style="margin-top:10px;"><a href="https://www.facebook.com/taklula" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="footer-bottom">
