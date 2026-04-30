@@ -1,17 +1,17 @@
 [
+    {
+    "id": "gimgha-stejjer-2026-02",
+    "title": "Ġimgħa Stejjer",
+    "year": "28 ta' Frar 2026",
+    "folder": "images/past-events/20260228gimgħastejjer",
+    "photos": ["cover.jpg","1.jpg", "2.jpg"]
+  },
   {
     "id": "wine-festival-2025",
     "title": "Bis-Saħħa Wine Festival",
     "year": "7 ta' Ġunju 2025",
     "folder": "images/past-events/20250607winefestival",
     "photos": ["cover.jpg"]
-  },
-  {
-    "id": "gimgha-stejjer-2026-02",
-    "title": "Ġimgħa Stejjer",
-    "year": "28 ta' Frar 2024",
-    "folder": "images/past-events/20260228gimgħastejjer",
-    "photos": ["cover.jpg","1.jpg", "2.jpg"]
   },
   {
     "id": "luminary-2024",
