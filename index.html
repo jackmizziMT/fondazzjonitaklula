@@ -259,12 +259,12 @@
     .ev-featured:hover { background: #155a8c; }
     .ev-featured-date { text-align: center; min-width: 80px; }
     .ev-featured-date .fd {
-      font-family: var(--fd); font-size: 4rem; font-weight: 700;
+      font-family: var(--fd); font-size: 3.2rem; font-weight: 700;
       line-height: 1; color: var(--white);
     }
     .ev-featured-date .fm {
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em;
-      text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px;
+      font-size: 0.85rem; font-weight: 400; letter-spacing: 0.04em;
+      text-transform: none; color: rgba(255,255,255,0.75); margin-top: 8px; line-height: 1.5;
     }
     .ev-featured-divider { width: 1px; height: 80px; background: rgba(255,255,255,0.2); }
     .ev-featured-tag {
@@ -304,7 +304,7 @@
     .ev-loading { padding: 48px 0; font-size: 0.9rem; color: var(--light); }
 
     /* ACTIVITIES */
-    .activities { background: var(--white); padding: 56px 52px 112px; }
+    .activities { background: var(--white); padding: 56px 52px 80px; }
     .activities-inner { max-width: 1160px; margin: 0 auto; }
     .activities-header { margin-bottom: 36px; }
     .activities-header h2 {
@@ -801,7 +801,7 @@
   if (window.scrollY > window.innerHeight - 80) nav.classList.add('light');
 
   // Events from events.json
-  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   function parseDate(s) { const [y,m,d] = s.split('-').map(Number); return new Date(y,m-1,d); }
 
   function renderEvents(events) {
@@ -816,7 +816,7 @@
     const first = upcoming[0];
     const d0 = parseDate(first.date);
     const meta0 = [first.time, first.location, first.free ? 'Free entry' : null].filter(Boolean);
-    html += '<div class="ev-featured" data-ev-id="'+first.id+'"><div class="ev-featured-date"><div class="fd">'+d0.getDate()+'</div><div class="fm">'+MONTHS[d0.getMonth()]+' '+d0.getFullYear()+'</div></div><div class="ev-featured-divider"></div><div class="ev-featured-body">'+
+    html += '<div class="ev-featured" data-ev-id="'+first.id+'"><div class="ev-featured-date"><div class="fd">'+d0.getDate()+'</div><div class="fm">'+MONTHS[d0.getMonth()]+'<br>'+d0.getFullYear()+'</div></div><div class="ev-featured-divider"></div><div class="ev-featured-body">'+
       (first.tag ? '<div class="ev-featured-tag">'+first.tag+'</div>' : '')+
       '<h3>'+first.title+'</h3><div class="ev-featured-meta">'+meta0.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-featured-arrow">'+arrowSvg+'</div></div>';
     upcoming.slice(1).forEach(ev => {
