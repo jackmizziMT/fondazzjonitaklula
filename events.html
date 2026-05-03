@@ -811,7 +811,7 @@
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 56px;
       padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
       margin-bottom: 28px;
     }
     .f-name {
@@ -825,41 +825,37 @@
       font-family: var(--fd);
       font-style: italic;
       font-size: 0.92rem;
-      color: var(--warm-soft);
+      color: var(--warm-soft, #E87050);
       margin-bottom: 20px;
     }
     .f-reg {
-      font-size: 0.66rem;
+      font-size: 0.68rem;
       letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.35);
     }
     .f-col h4 {
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.4);
       margin-bottom: 16px;
     }
     .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .f-col a { font-size: 0.86rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .f-col a { font-size: 0.9rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
     .f-col a:hover { color: var(--white); }
-    .f-col p { font-size: 0.86rem; line-height: 1.8; color: rgba(255,255,255,0.42); }
+    .f-col p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); }
     .footer-bottom {
       max-width: 1160px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.2);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
     }
-    .f-social a {
-      color: rgba(255,255,255,0.22);
-      margin-left: 14px;
-      transition: color 0.2s;
-    }
-    .f-social a:hover { color: var(--warm-soft); }
+    .f-social a { color: rgba(255,255,255,0.4); transition: color 0.2s; margin-left: 14px; }
+    .f-social a:hover { color: var(--warm-soft, #E87050); }
 
     /* ────────────────────────────────────
        RESPONSIVE
@@ -971,6 +967,288 @@
       .ev-card-body { padding: 24px 20px; }
     }
 
+  
+    
+    /* ─── EVENT OVERLAY ─── */
+    .ev-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; justify-content: flex-end;
+      pointer-events: none;
+    }
+    .ev-overlay.open { pointer-events: all; }
+    .ev-overlay-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(26,22,18,0);
+      transition: background 0.4s ease;
+    }
+    .ev-overlay.open .ev-overlay-backdrop { background: rgba(26,22,18,0.6); }
+    .ev-overlay-panel {
+      position: relative; z-index: 1;
+      width: min(560px, 100vw); height: 100%;
+      background: #fff;
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
+      overflow: hidden;
+      box-shadow: -8px 0 48px rgba(0,0,0,0.18);
+    }
+    .ev-overlay.open .ev-overlay-panel { transform: translateX(0); }
+    .ev-panel-poster {
+      width: 100%; aspect-ratio: 3/2; flex-shrink: 0;
+      position: relative; overflow: hidden; background: #1A1612;
+    }
+    .ev-panel-poster img { width:100%; height:100%; object-fit:cover; }
+    .ev-panel-poster-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      background: linear-gradient(135deg, #1A1612 0%, #2d1f10 100%);
+    }
+    .ev-panel-poster-placeholder .p-tag {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: #E87050;
+    }
+    .ev-panel-poster-placeholder .p-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 700;
+      color: #fff; text-align: center; padding: 0 32px;
+      line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .ev-panel-poster-placeholder .p-date {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em;
+    }
+    .ev-panel-close {
+      position: absolute; top: 16px; right: 16px; z-index: 2;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+      border: none; cursor: pointer; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .ev-panel-close:hover { background: rgba(255,255,255,0.32); }
+    .ev-panel-body {
+      flex: 1; overflow-y: auto; padding: 40px 44px 56px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .ev-panel-tag {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #D4522A;
+    }
+    .ev-panel-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700;
+      line-height: 1.05; letter-spacing: -0.02em; color: #1A1612;
+    }
+    .ev-panel-desc {
+      font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: #665D54;
+    }
+    .ev-panel-details {
+      border-top: 1px solid #E2DDD6; padding-top: 20px;
+      display: flex; flex-direction: column;
+    }
+    .ev-panel-detail {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 13px 0; border-bottom: 1px solid #E2DDD6;
+    }
+    .ev-panel-detail .d-label {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #A09890;
+    }
+    .ev-panel-detail .d-value { font-size: 0.88rem; color: #1A1612; }
+    .ev-panel-free {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #1B6CA8; background: #EBF3FA;
+      padding: 7px 14px; align-self: flex-start;
+    }
+    @media (max-width: 600px) {
+      .ev-overlay-panel { width: 100vw; }
+      .ev-panel-body { padding: 28px 24px 48px; }
+    }
+    /* ─── PAST EVENTS ARCHIVE ─── */
+    .past-archive {
+      background: var(--cream);
+      padding: 96px 52px 120px;
+      border-top: 1px solid var(--border);
+    }
+    .past-archive-inner { max-width: 1160px; margin: 0 auto; }
+    .past-archive-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    .past-archive-header h2 {
+      font-family: var(--fd);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+    }
+    .past-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    .past-card {
+      background: var(--white);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .past-card-cover {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #1a1612;
+    }
+    .past-card-cover img {
+      width: 100%; height: 100%; object-fit: contain; background: #1a1612;
+      transition: transform 0.6s var(--ease); filter: saturate(0.85);
+    }
+    .past-card:hover .past-card-cover img {
+      transform: scale(1.05); filter: saturate(1);
+    }
+    .past-card-ph {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--sand);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .past-card-ph svg { opacity: 0.2; }
+    .past-card-info {
+      padding: 18px 20px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .past-card:hover .past-card-info { border-color: var(--warm); }
+    .past-card-year {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--cool); margin-bottom: 4px;
+    }
+    .past-card-title {
+      font-family: var(--fd); font-size: 1.1rem;
+      font-weight: 600; color: var(--text); line-height: 1.1;
+    }
+    .past-card-subtitle {
+      font-family: var(--fd); font-size: 0.88rem;
+      font-style: italic; font-weight: 400;
+      color: var(--mid); margin-top: 3px; line-height: 1.2;
+    }
+    .past-card-count {
+      font-size: 0.75rem; color: var(--light); margin-top: 4px;
+    }
+    .past-empty {
+      padding: 48px 0; font-size: 0.92rem;
+      color: var(--light); font-style: italic;
+    }
+    @media (max-width: 900px) {
+      .past-archive { padding: 72px 24px 80px; }
+      .past-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .past-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ─── LIGHTBOX ─── */
+    .lb {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(10,8,6,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lb.open { opacity: 1; pointer-events: all; }
+
+    .lb-img-wrap {
+      position: relative;
+      max-width: 90vw; max-height: 85vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-img-wrap img {
+      max-width: 90vw; max-height: 82vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 2px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      transition: opacity 0.2s;
+    }
+    .lb-img-wrap img.loading { opacity: 0.3; }
+
+    /* Nav arrows */
+    .lb-prev, .lb-next {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2;
+    }
+    .lb-prev { left: 24px; }
+    .lb-next { right: 24px; }
+    .lb-prev:hover { background: rgba(255,255,255,0.2); transform: translateY(-50%) translateX(-2px); }
+    .lb-next:hover { background: rgba(255,255,255,0.2); transform: translateY(-50%) translateX(2px); }
+    .lb-prev.hidden, .lb-next.hidden { opacity: 0; pointer-events: none; }
+
+    /* Close button */
+    .lb-close {
+      position: fixed;
+      top: 20px; right: 24px;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.22); }
+
+    /* Counter + caption */
+    .lb-meta {
+      position: fixed;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      z-index: 2;
+    }
+    .lb-caption {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem; font-style: italic;
+      color: rgba(255,255,255,0.75);
+    }
+    .lb-counter {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* Thumbnail strip */
+    .lb-thumbs {
+      position: fixed;
+      bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 6px;
+      max-width: 90vw; overflow-x: auto;
+      padding: 4px;
+    }
+    .lb-thumb {
+      width: 52px; height: 40px; flex-shrink: 0;
+      overflow: hidden; cursor: pointer;
+      opacity: 0.45; border: 2px solid transparent;
+      transition: opacity 0.2s, border-color 0.2s;
+      border-radius: 2px;
+    }
+    .lb-thumb img { width:100%; height:100%; object-fit:cover; }
+    .lb-thumb.active { opacity: 1; border-color: rgba(255,255,255,0.7); }
+    .lb-thumb:hover { opacity: 0.8; }
+
+    @media (max-width: 700px) {
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+      .lb-thumbs { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -985,7 +1263,6 @@
   <ul class="nav-links">
     <li><a href="index.html" >Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html#activities">What We Do</a></li>
     <li><a href="events.html" class="active">Events</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -1006,6 +1283,12 @@
       <div class="sec-label">Upcoming</div>
       <p>Events are added throughout the year. Follow us on Facebook for the latest.</p>
     </div>
+    <div style="margin-bottom:32px;">
+      <a href="#past" class="btn-arrow" style="font-size:0.78rem;">
+        Jump to past events
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 7l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
     <div id="events-upcoming" class="ev-group">
       <p class="ev-loading">Loading events&hellip;</p>
     </div>
@@ -1025,7 +1308,7 @@
     const d = parseDate(ev.date);
     const meta = [ev.time, ev.location, ev.free ? 'Free entry' : null].filter(Boolean);
     return `
-      <div class="ev-card ${past ? 'ev-past' : ''}" onclick="window.__openEventOverlay(window.__evData.find(e=>e.id==='${ev.id}'))" style="cursor:pointer;">
+      <div class="ev-card ${past ? 'ev-past' : ''}" data-ev-id="${ev.id}" style="cursor:pointer;">
         <div class="ev-card-date">
           <div class="d">${d.getDate()}</div>
           <div class="m">${MONTHS[d.getMonth()]} ${d.getFullYear()}</div>
@@ -1061,9 +1344,257 @@
     { id:"evt-001", title:"Wine Festival 2026", date:"2026-06-14", time:"18:00", location:"Santa Lucija Village Square", description:"Our annual celebration of Gozitan wine and local produce. Free entry, open to all.", tag:"Festival", free:true },
     { id:"evt-002", title:"Literary Evening with Inizjamed", date:"2026-07-03", time:"19:30", location:"Venue TBC, Santa Lucija", description:"Quarterly literary evening in partnership with Inizjamed — poetry, prose, and good conversation.", tag:"Arts", free:true }
   ];
-  fetch('events.json').then(r=>r.json()).then(d=>{window.__evData=d;renderAll(d);}).catch(()=>{window.__evData=fallback;renderAll(fallback);});
+  fetch('events.json').then(r=>r.json()).then(d=>{window.__allEvents=d;renderAll(d);}).catch(()=>{window.__allEvents=fallback;renderAll(fallback);});
 </script>
 
+
+</div>
+
+<script>
+  document.getElementById('nav') && document.getElementById('nav').classList.add('light');
+
+</script>
+
+<!-- PAST EVENTS ARCHIVE -->
+<section class="past-archive" id="past">
+  <div class="past-archive-inner">
+    <div class="past-archive-header">
+      <div>
+        <div class="sec-label">Archive</div>
+        <h2>Past events</h2>
+      </div>
+    </div>
+    <div class="past-grid" id="past-archive-grid">
+      <p class="past-empty">Loading&hellip;</p>
+    </div>
+  </div>
+</section>
+
+<div class="ev-overlay" id="ev-overlay">
+  <div class="ev-overlay-backdrop" id="ev-backdrop"></div>
+  <div class="ev-overlay-panel">
+    <div class="ev-panel-poster" id="ev-panel-poster">
+      <button class="ev-panel-close" id="ev-panel-close" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="ev-panel-body" id="ev-panel-body"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function pDate(s){var p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
+  function fDate(s){var d=pDate(s);return d.getDate()+' '+MON[d.getMonth()]+' '+d.getFullYear();}
+
+  function openOv(ev){
+    var ov=document.getElementById('ev-overlay');
+    var po=document.getElementById('ev-panel-poster');
+    var bo=document.getElementById('ev-panel-body');
+    if(!ov||!po||!bo){return;}
+    var cb=po.querySelector('#ev-panel-close');
+    po.innerHTML='';
+    if(cb){po.appendChild(cb);}
+    if(ev.poster){
+      var im=document.createElement('img');
+      im.src=ev.poster;im.alt=ev.title;po.appendChild(im);
+    } else {
+      var ph=document.createElement('div');
+      ph.className='ev-panel-poster-placeholder';
+      ph.innerHTML=(ev.tag?'<div class="p-tag">'+ev.tag+'</div>':'')+
+        '<div class="p-title">'+ev.title+'</div>'+
+        '<div class="p-date">'+fDate(ev.date)+'</div>';
+      po.appendChild(ph);
+    }
+    var det='<div class="ev-panel-detail"><span class="d-label">Date</span><span class="d-value">'+fDate(ev.date)+'</span></div>';
+    if(ev.time){det+='<div class="ev-panel-detail"><span class="d-label">Time</span><span class="d-value">'+ev.time+'</span></div>';}
+    if(ev.location){det+='<div class="ev-panel-detail"><span class="d-label">Location</span><span class="d-value">'+ev.location+'</span></div>';}
+    bo.innerHTML=
+      (ev.tag?'<div class="ev-panel-tag">'+ev.tag+'</div>':'')+
+      '<div class="ev-panel-title">'+ev.title+'</div>'+
+      (ev.description?'<p class="ev-panel-desc">'+ev.description+'</p>':'')+
+      '<div class="ev-panel-details">'+det+'</div>'+
+      (ev.free?'<div class="ev-panel-free">Free entry</div>':'');
+    ov.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  function closeOv(){
+    var ov=document.getElementById('ev-overlay');
+    if(ov){ov.classList.remove('open');}
+    document.body.style.overflow='';
+  }
+
+  document.addEventListener('click',function(e){
+    // Close triggers
+    var t=e.target;
+    if(t.id==='ev-backdrop'||t.closest('#ev-panel-close')){closeOv();return;}
+    // Card triggers
+    var card=t.closest?t.closest('[data-ev-id]'):null;
+    if(!card){return;}
+    var id=card.getAttribute('data-ev-id');
+    var all=window.__allEvents||[];
+    for(var i=0;i<all.length;i++){
+      if(all[i].id===id){openOv(all[i]);return;}
+    }
+  });
+
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeOv();}});
+  window._openOv=openOv;
+  window._closeOv=closeOv;
+})();
+
+  // ── Past events archive ──
+  (function() {
+    var ph = '<div class="past-card-ph"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#9E958C" stroke-width="1.5"/><circle cx="14" cy="17" r="3" stroke="#9E958C" stroke-width="1.5"/><path d="M4 26l8-6 6 5 5-4 9 7" stroke="#9E958C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+    function renderArchive(events) {
+      var grid = document.getElementById('past-archive-grid');
+      if (!grid) return;
+      if (!events || !events.length) {
+        grid.innerHTML = '<p class="past-empty">No past events yet — check back soon.</p>';
+        return;
+      }
+      grid.innerHTML = events.map(function(ev) {
+        var hasCover = ev.photos && ev.photos.length;
+        var img = hasCover
+          ? '<div class="past-card-cover"><img src="'+ev.folder+'/'+ev.photos[0]+'" alt="'+ev.title+'" loading="lazy"/></div>'
+          : ph;
+        var count = ev.photos ? ev.photos.length : 0;
+        var cursor = hasCover ? ' style="cursor:pointer;"' : '';
+        return '<div class="past-card" data-past-id="'+ev.id+'"'+cursor+'>'+img+
+          '<div class="past-card-info">'+
+            '<div class="past-card-year">'+ev.year+'</div>'+
+            '<div class="past-card-title">'+ev.title+'</div>'+(ev.subtitle?'<div class="past-card-subtitle">'+ev.subtitle+'</div>':'')+
+            (count > 0 ? '<div class="past-card-count">'+count+' photo'+(count!==1?'s':'')+'</div>' : '')+
+          '</div>'+
+        '</div>';
+      }).join('');
+    }
+    var _archiveData = [];
+    function renderAndWireArchive(events) {
+      _archiveData = events;
+      renderArchive(events);
+      setTimeout(function() {
+        var grid = document.getElementById('past-archive-grid');
+        if (!grid) return;
+        grid.addEventListener('click', function(e) {
+          var card = e.target.closest('[data-past-id]');
+          if (!card) return;
+          var id = card.getAttribute('data-past-id');
+          var ev = _archiveData.find(function(x){ return x.id === id; });
+          if (!ev || !ev.photos || !ev.photos.length) return;
+          var photos = ev.photos.map(function(f) {
+            return { src: ev.folder+'/'+f, caption: ev.title+' — '+ev.year };
+          });
+          if (window.__openLightbox) window.__openLightbox(photos, 0);
+        });
+      }, 100);
+    }
+    fetch('past-events.json').then(function(r){return r.json();}).then(renderAndWireArchive).catch(function(){renderAndWireArchive([]);});
+
+    // Scroll to #past on page load if hash present
+    if (window.location.hash === '#past') {
+      window.addEventListener('load', function() {
+        var el = document.getElementById('past');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  })();
+
+  // ── Lightbox ──
+  (function() {
+    var _photos = [], _idx = 0;
+    var lb       = document.getElementById('lb');
+    var lbImg    = document.getElementById('lb-img');
+    var lbPrev   = document.getElementById('lb-prev');
+    var lbNext   = document.getElementById('lb-next');
+    var lbClose  = document.getElementById('lb-close');
+    var lbThumbs = document.getElementById('lb-thumbs');
+    var lbCaption= document.getElementById('lb-caption');
+    var lbCounter= document.getElementById('lb-counter');
+
+    function show(idx) {
+      if (!_photos.length) return;
+      _idx = (idx + _photos.length) % _photos.length;
+      var p = _photos[_idx];
+      lbImg.classList.add('loading');
+      var tmp = new Image();
+      tmp.onload = function() { lbImg.src = p.src; lbImg.classList.remove('loading'); };
+      tmp.src = p.src;
+      lbCaption.textContent = p.caption || '';
+      lbCounter.textContent = (_idx + 1) + ' / ' + _photos.length;
+      lbPrev.classList.toggle('hidden', _photos.length <= 1);
+      lbNext.classList.toggle('hidden', _photos.length <= 1);
+      // Thumbnails
+      if (lbThumbs) {
+        Array.from(lbThumbs.querySelectorAll('.lb-thumb')).forEach(function(t, i) {
+          t.classList.toggle('active', i === _idx);
+        });
+      }
+    }
+
+    function openLb(photos, startIdx) {
+      _photos = photos;
+      // Build thumbnails
+      if (lbThumbs) {
+        lbThumbs.innerHTML = photos.map(function(p, i) {
+          return '<div class="lb-thumb'+(i===startIdx?' active':'')+'" data-i="'+i+'"><img src="'+p.src+'" alt="" loading="lazy"/></div>';
+        }).join('');
+        lbThumbs.querySelectorAll('.lb-thumb').forEach(function(t) {
+          t.addEventListener('click', function() { show(parseInt(t.dataset.i)); });
+        });
+      }
+      show(startIdx || 0);
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (lbClose) lbClose.addEventListener('click', closeLb);
+    if (lbPrev)  lbPrev.addEventListener('click', function() { show(_idx - 1); });
+    if (lbNext)  lbNext.addEventListener('click', function() { show(_idx + 1); });
+    if (lb)      lb.addEventListener('click', function(e) { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e) {
+      if (!lb || !lb.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  show(_idx - 1);
+      if (e.key === 'ArrowRight') show(_idx + 1);
+      if (e.key === 'Escape')     closeLb();
+    });
+
+    // Expose globally so card click handlers can call it
+    window.__openLightbox = openLb;
+  })();
+</script>
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lb-close" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <button class="lb-prev" id="lb-prev" aria-label="Previous">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt=""/></div>
+  <button class="lb-next" id="lb-next" aria-label="Next">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+  <div class="lb-meta">
+    <div class="lb-caption" id="lb-caption"></div>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+</div>
 <footer class="footer">
   <div class="footer-grid">
     <div>
@@ -1075,18 +1606,15 @@
       <h4>Pages</h4>
       <ul>
         <li><a href="about.html">About</a></li>
-        <li><a href="what-we-do.html">What We Do</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="f-col">
       <h4>Contact</h4>
-      <p>Santa Lucija, Gozo, Malta<br>
-        <a href="mailto:taklula.gozo@gmail.com">taklula.gozo@gmail.com</a><br><br>
-        <a href="https://www.facebook.com/taklula" target="_blank" rel="noopener">Facebook</a>
-      </p>
+      <p>Santa Lucija, Gozo, Malta</p>
+      <p><a href="mailto:taklula.gozo@gmail.com">taklula.gozo@gmail.com</a></p>
+      <p style="margin-top:10px;"><a href="https://www.facebook.com/taklula" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1098,92 +1626,5 @@
     </div>
   </div>
 </footer>
-<script>
-  document.getElementById('nav') && document.getElementById('nav').classList.add('light');
-
-  // ── Event overlay ──
-  const MONTHS_OV = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const overlay   = document.getElementById('ev-overlay');
-  const backdrop  = document.getElementById('ev-backdrop');
-  const panelClose = document.getElementById('ev-panel-close');
-  const panelPoster = document.getElementById('ev-panel-poster');
-  const panelBody  = document.getElementById('ev-panel-body');
-
-  function openOverlay(ev) {
-    const d = parseDate(ev.date);
-    const dateStr = d.getDate() + ' ' + MONTHS_OV[d.getMonth()] + ' ' + d.getFullYear();
-
-    // Poster
-    const existingPh = panelPoster.querySelector('.ev-panel-poster-placeholder');
-    const existingImg = panelPoster.querySelector('img');
-    if (existingPh) existingPh.remove();
-    if (existingImg) existingImg.remove();
-
-    if (ev.poster) {
-      const img = document.createElement('img');
-      img.src = ev.poster;
-      img.alt = ev.title;
-      panelPoster.appendChild(img);
-    } else {
-      panelPoster.insertAdjacentHTML('beforeend', `
-        <div class="ev-panel-poster-placeholder">
-          ${ev.tag ? `<div class="p-tag">${ev.tag}</div>` : ''}
-          <div class="p-title">${ev.title}</div>
-          <div class="p-date">${dateStr}</div>
-        </div>`);
-    }
-
-    // Body
-    const details = [
-      { label: 'Date',     value: dateStr },
-      ev.time     ? { label: 'Time',     value: ev.time } : null,
-      ev.location ? { label: 'Location', value: ev.location } : null,
-    ].filter(Boolean);
-
-    panelBody.innerHTML = `
-      ${ev.tag ? `<div class="ev-panel-tag">${ev.tag}</div>` : ''}
-      <div class="ev-panel-title">${ev.title}</div>
-      ${ev.description ? `<p class="ev-panel-desc">${ev.description}</p>` : ''}
-      <div class="ev-panel-details">
-        ${details.map(d => `
-          <div class="ev-panel-detail">
-            <span class="d-label">${d.label}</span>
-            <span class="d-value">${d.value}</span>
-          </div>`).join('')}
-      </div>
-      ${ev.free ? '<div class="ev-panel-free">Free entry</div>' : ''}
-    `;
-
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeOverlay() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  if (backdrop)   backdrop.addEventListener('click', closeOverlay);
-  if (panelClose) panelClose.addEventListener('click', closeOverlay);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
-
-  // Expose globally so render functions can call it
-  window.__openEventOverlay = openOverlay;
-</script>
-
-<!-- EVENT OVERLAY -->
-<div class="ev-overlay" id="ev-overlay" aria-modal="true" role="dialog">
-  <div class="ev-overlay-backdrop" id="ev-backdrop"></div>
-  <div class="ev-overlay-panel" id="ev-panel">
-    <div class="ev-panel-poster" id="ev-panel-poster">
-      <button class="ev-panel-close" id="ev-panel-close" aria-label="Close">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-    <div class="ev-panel-body" id="ev-panel-body"></div>
-  </div>
-</div>
 </body>
 </html>
