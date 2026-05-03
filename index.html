@@ -4,928 +4,788 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fondazzjoni ta' Klula — Gozo. Culture. Alive.</title>
-  <meta name="description" content="A heritage and cultural foundation celebrating Gozo — rooted in Santa Lucija, open to everyone." />
+  <meta name="description" content="A heritage and cultural foundation celebrating the people, places, and traditions of Gozo — rooted in Santa Lucija, open to everyone." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
-    /* TOKENS */
+    /* ── TOKENS ── */
     :root {
-      --warm:        #D4522A;
-      --warm-soft:   #E87050;
-      --warm-bg:     #FDF2EE;
-      --cool:        #1B6CA8;
-      --cool-soft:   #3D8EC4;
-      --cool-bg:     #EBF3FA;
-      --cream:       #F6F1E9;
-      --sand:        #EAE5DC;
+      --primary:     #E8541A;
+      --secondary:   #2B9EC3;
+      --accent:      #C9962A;
+      --bg:          #FAFAF7;
+      --surface:     #F7F4EE;
+      --text:        #1F1F1F;
+      --text-light:  #5A5A5A;
       --white:       #FFFFFF;
-      --text:        #1A1612;
-      --mid:         #665D54;
-      --light:       #A09890;
-      --border:      #E2DDD6;
-      --fd: 'Cormorant Garamond', Georgia, serif;
-      --fb: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --border:      #E8E4DC;
+
+      --font-head:   'Playfair Display', Georgia, serif;
+      --font-body:   'DM Sans', system-ui, sans-serif;
+
+      --radius:      6px;
+      --shadow:      0 2px 16px rgba(0,0,0,0.08);
+      --shadow-lg:   0 8px 40px rgba(0,0,0,0.12);
     }
+
+    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--fb); background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
     img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
 
-    /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 64px; display: flex; align-items: center;
-      justify-content: space-between; padding: 0 52px;
-      transition: background 0.5s, border-color 0.5s;
-    }
-    .nav.light {
-      background: rgba(246, 241, 233, 0.94);
-      backdrop-filter: blur(18px);
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
     }
-    .nav-brand-link { display: flex; align-items: center; gap: 14px; }
-    .nav-logo-img {
-      height: 52px; width: auto; opacity: 0.92;
-      filter: brightness(0) invert(1);
-      transition: filter 0.4s, opacity 0.4s;
-    }
-    .nav.light .nav-logo-img { filter: none; opacity: 1; }
-    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.25; }
-    .nav-brand-name {
-      font-family: var(--fd); font-size: 1.3rem; font-weight: 600;
-      letter-spacing: 0.04em; color: var(--white); transition: color 0.4s;
-    }
-    .nav.light .nav-brand-name { color: var(--text); }
-    .nav-brand-reg {
-      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em;
-      text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color 0.4s;
-    }
-    .nav.light .nav-brand-reg { color: var(--light); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: 0.74rem; font-weight: 500; letter-spacing: 0.09em;
-      text-transform: uppercase; color: rgba(255,255,255,0.6); transition: color 0.2s;
-    }
-    .nav.light .nav-links a { color: var(--mid); }
-    .nav-links a:hover, .nav-links a.active { color: var(--cool) !important; }
+    nav.scrolled { box-shadow: var(--shadow); }
 
-    /* HERO */
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-brand .brand-main {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .nav-brand .brand-sub {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ── HERO ── */
     .hero {
-      position: relative; width: 100%; height: 100vh; min-height: 640px;
-      overflow: hidden; display: flex; align-items: flex-end;
+      position: relative;
+      height: 100vh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--text);
     }
-    .hero-photo { position: absolute; inset: 0; z-index: 0; }
-    .hero-photo img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center 50%;
-      animation: kenBurns 28s ease-in-out infinite alternate;
-      transform-origin: center; will-change: transform;
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero.jpg') center/cover no-repeat;
+      opacity: 0.55;
+      transform: scale(1.04);
+      animation: heroZoom 12s ease-out forwards;
     }
-    @keyframes kenBurns {
-      0%   { transform: scale(1.18) translate(3%, 2%); }
-      25%  { transform: scale(1.12) translate(-2%, 1%); }
-      50%  { transform: scale(1.15) translate(1%, -3%); }
-      75%  { transform: scale(1.10) translate(-3%, 0%); }
-      100% { transform: scale(1.18) translate(2%, 3%); }
+    @keyframes heroZoom {
+      to { transform: scale(1); }
     }
+
+    /* Warm overlay matching our palette */
     .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to bottom,
-        rgba(15,12,8,0.45) 0%, rgba(15,12,8,0.1) 35%,
-        rgba(15,12,8,0.1) 55%, rgba(15,12,8,0.72) 100%);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(232, 84, 26, 0.18) 0%,
+        rgba(31, 31, 31, 0.55) 60%,
+        rgba(43, 158, 195, 0.12) 100%
+      );
     }
-    .hero-wash {
-      position: absolute; inset: 0; z-index: 2;
-      background: radial-gradient(ellipse 140% 100% at 90% 10%, rgba(212,82,42,0.5) 0%, transparent 55%);
-      animation: washDrift 12s ease-in-out infinite alternate;
-      mix-blend-mode: screen;
-    }
-    @keyframes washDrift {
-      0% { opacity: 0.7; transform: translate(0,0) scale(1); }
-      50% { opacity: 1; transform: translate(-8%,5%) scale(1.1); }
-      100% { opacity: 0.5; transform: translate(5%,-5%) scale(0.95); }
-    }
-    .hero-wash-2 {
-      position: absolute; inset: 0; z-index: 2;
-      background: radial-gradient(ellipse 120% 90% at 5% 90%, rgba(27,108,168,0.45) 0%, transparent 50%);
-      animation: washDrift2 16s ease-in-out infinite alternate;
-      mix-blend-mode: screen;
-    }
-    @keyframes washDrift2 {
-      0% { opacity: 0.5; transform: translate(0,0) scale(1); }
-      50% { opacity: 0.9; transform: translate(6%,-8%) scale(1.15); }
-      100% { opacity: 0.4; transform: translate(-4%,4%) scale(1.05); }
-    }
-    .hero-wash-3 {
-      position: absolute; inset: 0; z-index: 2;
-      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.35) 100%);
-      animation: vignettePulse 8s ease-in-out infinite alternate;
-    }
-    @keyframes vignettePulse { 0% { opacity: 0.6; } 100% { opacity: 1; } }
 
     .hero-content {
-      position: relative; z-index: 10;
-      width: 100%; max-width: 780px; padding: 0 52px 88px;
-    }
-    .hero-headline {
-      font-family: var(--fd);
-      font-size: clamp(4.5rem, 8vw, 8.5rem);
-      font-weight: 700; line-height: 0.88;
-      letter-spacing: -0.03em; color: var(--white);
-    }
-    .hero-headline .ln { display: block; }
-    .hero-headline .ln:nth-child(2) { color: rgba(255,255,255,0.55); font-style: italic; }
-    .hero-headline .ln:nth-child(3) { color: var(--warm-soft); }
-    .hero-desc {
-      font-size: 1rem; font-weight: 300; line-height: 1.75;
-      color: rgba(255,255,255,0.58); max-width: 520px;
-      margin-top: 28px; margin-bottom: 0;
-    }
-    /* Scroll indicator */
-    .hero-scroll {
-      position: absolute; bottom: 36px; left: 50%;
-      transform: translateX(-50%); z-index: 10;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      cursor: pointer; opacity: 1;
-    }
-    .hero-scroll span {
-      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(255,255,255,0.35);
-    }
-    .hero-scroll-chevron { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-    .hero-scroll-chevron svg { animation: chevronBounce 1.8s ease-in-out infinite; color: rgba(255,255,255,0.45); }
-    .hero-scroll-chevron svg:nth-child(2) { animation-delay: 0.18s; opacity: 0.6; }
-    .hero-scroll-chevron svg:nth-child(3) { animation-delay: 0.36s; opacity: 0.3; }
-    @keyframes chevronBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(5px); }
-    }
-
-    /* SEC LABEL */
-    .sec-label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.64rem; font-weight: 600; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--cool); margin-bottom: 20px;
-    }
-    .sec-label::before {
-      content: ''; width: 18px; height: 1.5px;
-      background: var(--cool); flex-shrink: 0;
-    }
-
-    /* ABOUT SECTION */
-    .about { background: var(--cream); padding: 112px 52px; }
-    .about-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 88px; align-items: center;
-    }
-    .about-text h2 {
-      font-family: var(--fd); font-size: clamp(2.2rem, 4vw, 3.6rem);
-      font-weight: 600; line-height: 1.06; letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 24px;
-    }
-    .about-text h2 em { font-style: italic; color: var(--mid); }
-    .about-text p {
-      font-size: 0.97rem; font-weight: 300; line-height: 1.82;
-      color: var(--mid); margin-bottom: 36px;
-    }
-    .btn-arrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--cool); transition: gap 0.2s;
-    }
-    .btn-arrow:hover { gap: 16px; color: var(--cool-soft); }
-    .about-photo {
-      width: 100%; aspect-ratio: 4/3; overflow: hidden;
-      border-radius: 3px; box-shadow: 0 16px 56px rgba(0,0,0,0.1);
-    }
-    .about-photo img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.7s var(--ease);
-    }
-    .about-photo:hover img { transform: scale(1.03); }
-
-    /* EDEN RECOGNITION */
-    .eden-sec {
-      background: var(--white); padding: 72px 52px;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .eden-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: flex; flex-direction: row; align-items: center; gap: 56px;
-    }
-    .eden-logo-wrap { flex-shrink: 0; width: 140px; }
-    .eden-logo-wrap img { width: 140px; height: 140px; object-fit: contain; }
-    .eden-vdivider { flex-shrink: 0; width: 1px; height: 100px; background: var(--border); }
-    .eden-text { flex: 1; min-width: 0; }
-    .eden-text .sec-label { margin-bottom: 12px; }
-    .eden-text h2 {
-      font-family: var(--fd); font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      font-weight: 600; letter-spacing: -0.02em; line-height: 1.1;
-      color: var(--text); margin-bottom: 16px;
-    }
-    .eden-text h2 em { font-style: italic; color: var(--mid); }
-    .eden-text p { font-size: 0.92rem; font-weight: 300; line-height: 1.78; color: var(--mid); }
-    .eden-badge {
-      flex-shrink: 0; text-align: center; padding: 28px 36px;
-      background: #F0FAF5; border: 1px solid #B8DEC9; min-width: 140px;
-    }
-    .eden-badge .eb-year {
-      font-family: var(--fd); font-size: 2.8rem; font-weight: 700;
-      line-height: 1; color: #006B3C;
-    }
-    .eden-badge .eb-label {
-      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: #006B3C; opacity: 0.7; margin-top: 6px;
-    }
-    .eden-badge .eb-country { font-size: 0.72rem; color: #006B3C; margin-top: 8px; opacity: 0.6; }
-
-    /* EVENTS */
-    .events { background: var(--white); padding: 96px 52px 56px; border-top: 1px solid var(--border); }
-    .events-inner { max-width: 1160px; margin: 0 auto; }
-    .events-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
-    .events-header h2 {
-      font-family: var(--fd); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 600; letter-spacing: -0.02em; margin-top: 14px;
-    }
-    .ev-featured {
-      background: var(--cool); color: var(--white); padding: 48px 52px;
-      display: grid; grid-template-columns: auto 1fr auto;
-      gap: 48px; align-items: center; margin-bottom: 4px;
-      cursor: pointer; transition: background 0.2s; text-decoration: none;
-    }
-    .ev-featured:hover { background: #155a8c; }
-    .ev-featured-date { text-align: center; min-width: 80px; }
-    .ev-featured-date .fd {
-      font-family: var(--fd); font-size: 4rem; font-weight: 700;
-      line-height: 1; color: var(--white);
-    }
-    .ev-featured-date .fm {
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em;
-      text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px;
-    }
-    .ev-featured-divider { width: 1px; height: 80px; background: rgba(255,255,255,0.2); }
-    .ev-featured-tag {
-      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px;
-    }
-    .ev-featured-body h3 {
-      font-family: var(--fd); font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 600; color: var(--white); margin-bottom: 10px;
-      letter-spacing: -0.01em; line-height: 1.1;
-    }
-    .ev-featured-meta {
-      font-size: 0.82rem; color: rgba(255,255,255,0.6);
-      display: flex; gap: 20px; flex-wrap: wrap;
-    }
-    .ev-featured-arrow { color: rgba(255,255,255,0.4); transition: transform 0.2s, color 0.2s; }
-    .ev-featured:hover .ev-featured-arrow { transform: translateX(5px); color: var(--white); }
-    .ev-row {
-      display: grid; grid-template-columns: 80px 1fr 28px;
-      align-items: stretch; border-bottom: 1px solid var(--border);
-      cursor: pointer; transition: background 0.18s;
-    }
-    .ev-row:first-of-type { border-top: 1px solid var(--border); }
-    .ev-row:hover { background: var(--cool-bg); }
-    .ev-row:hover .ev-arr { opacity: 1; transform: translateX(0); }
-    .ev-date {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; padding: 24px 10px; border-right: 1px solid var(--border);
-    }
-    .ev-date .d { font-family: var(--fd); font-size: 2rem; font-weight: 700; line-height: 1; color: var(--cool); }
-    .ev-date .m { font-size: 0.57rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); margin-top: 3px; }
-    .ev-body { padding: 22px 32px; }
-    .ev-body h3 { font-family: var(--fd); font-size: 1.2rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
-    .ev-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.78rem; color: var(--light); }
-    .ev-arr { display: flex; align-items: center; padding-right: 4px; color: var(--cool); opacity: 0; transform: translateX(-8px); transition: opacity 0.2s, transform 0.2s; }
-    .ev-empty { padding: 48px 0; font-size: 0.9rem; color: var(--light); font-style: italic; }
-    .ev-loading { padding: 48px 0; font-size: 0.9rem; color: var(--light); }
-
-    /* ACTIVITIES */
-    .activities { background: var(--white); padding: 56px 52px 112px; }
-    .activities-inner { max-width: 1160px; margin: 0 auto; }
-    .activities-header { margin-bottom: 36px; }
-    .activities-header h2 {
-      font-family: var(--fd); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin-top: 14px;
-    }
-    .act-lead {
-      font-size: 1.05rem; font-weight: 300; line-height: 1.82;
-      color: var(--mid); max-width: 740px; margin-bottom: 52px;
-    }
-    .act-tiles {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; margin-bottom: 44px;
-    }
-    .act-tile {
-      background: var(--cream); padding: 44px 40px;
-      border: 1px solid var(--border); position: relative;
-      overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .act-tile:hover { border-color: var(--warm); box-shadow: 0 4px 24px rgba(212,82,42,0.08); }
-    .act-tile-num {
-      font-family: var(--fd); font-size: 5rem; font-weight: 700;
-      line-height: 1; color: var(--text); opacity: 0.06;
-      position: absolute; top: 16px; right: 24px;
-      pointer-events: none; letter-spacing: -0.03em; transition: opacity 0.25s;
-    }
-    .act-tile:hover .act-tile-num { opacity: 0.1; }
-    .act-tile-body h3 {
-      font-family: var(--fd); font-size: 1.6rem; font-weight: 600;
-      color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em;
-    }
-    .act-tile-body p { font-size: 0.9rem; font-weight: 300; color: var(--mid); line-height: 1.72; }
-    .act-cta-line { margin-top: 8px; }
-
-    /* PAST EVENTS TEASER */
-    .past-teaser { background: var(--cream); padding: 80px 52px; border-top: 1px solid var(--border); }
-    .past-teaser-inner { max-width: 1160px; margin: 0 auto; }
-    .past-teaser-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; }
-    .past-teaser-header h2 { font-family: var(--fd); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; letter-spacing: -0.02em; margin-top: 12px; }
-    .past-teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-    .past-teaser-tile { position: relative; overflow: hidden; background: var(--sand); }
-    .past-teaser-tile-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
-    .past-teaser-tile-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); filter: saturate(0.85); }
-    .past-teaser-tile:hover .past-teaser-tile-img img { transform: scale(1.05); filter: saturate(1); }
-    .past-teaser-tile-ph { width: 100%; aspect-ratio: 4/3; background: var(--sand); display: flex; align-items: center; justify-content: center; }
-    .past-teaser-tile-ph svg { opacity: 0.2; }
-    .past-teaser-tile-info { padding: 14px 16px; background: var(--white); border-top: 2px solid transparent; transition: border-color 0.2s; }
-    .past-teaser-tile:hover .past-teaser-tile-info { border-color: var(--warm); }
-    .past-teaser-tile-year { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cool); margin-bottom: 3px; }
-    .past-teaser-tile-title { font-family: var(--fd); font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.1; }
-
-    /* EDEN RECOGNITION */
-    /* CTA */
-    .cta { background: var(--white); padding: 112px 52px; border-top: 1px solid var(--border); }
-    .cta-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 48px; }
-    .cta-text h2 { font-family: var(--fd); font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 600; letter-spacing: -0.025em; line-height: 0.98; color: var(--text); margin-bottom: 16px; }
-    .cta-text h2 em { font-style: italic; color: var(--warm); }
-    .cta-text p { font-size: 0.97rem; font-weight: 300; color: var(--mid); max-width: 400px; line-height: 1.75; }
-    .btn-fill {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--warm); color: var(--white);
-      font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 14px 26px;
-      transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
-    }
-    .btn-fill:hover { background: #b83d1a; transform: translateY(-1px); }
-
-    /* FOOTER */
-    .footer { background: var(--text); padding: 72px 52px 40px; }
-    .footer-grid {
-      max-width: 1160px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 56px; padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 28px;
-    }
-    .f-name { font-family: var(--fd); font-size: 1.35rem; font-weight: 600; color: var(--white); margin-bottom: 5px; }
-    .f-tag { font-family: var(--fd); font-style: italic; font-size: 0.92rem; color: var(--warm-soft); margin-bottom: 20px; }
-    .f-reg { font-size: 0.68rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.35); }
-    .f-col h4 { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
-    .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .f-col a { font-size: 0.9rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
-    .f-col a:hover { color: var(--white); }
-    .f-col p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); }
-    .footer-bottom { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(255,255,255,0.4); }
-    .f-social a { color: rgba(255,255,255,0.4); transition: color 0.2s; margin-left: 14px; }
-    .f-social a:hover { color: var(--warm-soft); }
-
-    /* EVENT OVERLAY */
-    .ev-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: flex-end; pointer-events: none; }
-    .ev-overlay.open { pointer-events: all; }
-    .ev-overlay-backdrop { position: absolute; inset: 0; background: rgba(26,22,18,0); transition: background 0.4s ease; }
-    .ev-overlay.open .ev-overlay-backdrop { background: rgba(26,22,18,0.6); }
-    .ev-overlay-panel { position: relative; z-index: 1; width: min(560px, 100vw); height: 100%; background: #fff; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); overflow: hidden; box-shadow: -8px 0 48px rgba(0,0,0,0.18); }
-    .ev-overlay.open .ev-overlay-panel { transform: translateX(0); }
-    .ev-panel-poster { width: 100%; aspect-ratio: 3/2; flex-shrink: 0; position: relative; overflow: hidden; background: #1A1612; }
-    .ev-panel-poster img { width:100%; height:100%; object-fit:cover; }
-    .ev-panel-poster-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; background: linear-gradient(135deg, #1A1612 0%, #2d1f10 100%); }
-    .ev-panel-poster-placeholder .p-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #E87050; }
-    .ev-panel-poster-placeholder .p-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 700; color: #fff; text-align: center; padding: 0 32px; line-height: 1.1; letter-spacing: -0.02em; }
-    .ev-panel-poster-placeholder .p-date { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
-    .ev-panel-close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); border: none; cursor: pointer; color: #fff; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-    .ev-panel-close:hover { background: rgba(255,255,255,0.32); }
-    .ev-panel-body { flex: 1; overflow-y: auto; padding: 40px 44px 56px; display: flex; flex-direction: column; gap: 20px; }
-    .ev-panel-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #D4522A; }
-    .ev-panel-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; color: #1A1612; }
-    .ev-panel-desc { font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: #665D54; }
-    .ev-panel-details { border-top: 1px solid #E2DDD6; padding-top: 20px; display: flex; flex-direction: column; }
-    .ev-panel-detail { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #E2DDD6; }
-    .ev-panel-detail .d-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A09890; }
-    .ev-panel-detail .d-value { font-size: 0.88rem; color: #1A1612; }
-    .ev-panel-free { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1B6CA8; background: #EBF3FA; padding: 7px 14px; align-self: flex-start; }
-
-    /* LIGHTBOX */
-    .lb { position: fixed; inset: 0; z-index: 10000; background: rgba(10,8,6,0.95); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-    .lb.open { opacity: 1; pointer-events: all; }
-    .lb-img-wrap { position: relative; max-width: 90vw; max-height: 85vh; display: flex; align-items: center; justify-content: center; }
-    .lb-img-wrap img { max-width: 90vw; max-height: 82vh; object-fit: contain; display: block; border-radius: 2px; box-shadow: 0 24px 80px rgba(0,0,0,0.6); transition: opacity 0.2s; }
-    .lb-img-wrap img.loading { opacity: 0.3; }
-    .lb-prev, .lb-next { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
-    .lb-prev { left: 24px; }
-    .lb-next { right: 24px; }
-    .lb-prev:hover { background: rgba(255,255,255,0.2); }
-    .lb-next:hover { background: rgba(255,255,255,0.2); }
-    .lb-prev.hidden, .lb-next.hidden { opacity: 0; pointer-events: none; }
-    .lb-close { position: fixed; top: 20px; right: 24px; width: 44px; height: 44px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; border: none; }
-    .lb-close:hover { background: rgba(255,255,255,0.22); }
-    .lb-meta { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 2; }
-    .lb-caption { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.75); }
-    .lb-counter { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
-    .lb-thumbs { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; max-width: 90vw; overflow-x: auto; padding: 4px; }
-    .lb-thumb { width: 52px; height: 40px; flex-shrink: 0; overflow: hidden; cursor: pointer; opacity: 0.45; border: 2px solid transparent; transition: opacity 0.2s, border-color 0.2s; border-radius: 2px; }
-    .lb-thumb img { width:100%; height:100%; object-fit:cover; }
-    .lb-thumb.active { opacity: 1; border-color: rgba(255,255,255,0.7); }
-
-    /* PAST TEASER tile placeholder */
-    .past-tile-ph { width: 100%; aspect-ratio: 4/3; background: var(--sand); display: flex; align-items: center; justify-content: center; }
-    .past-tile-ph svg { opacity: 0.2; }
-
-    /* RESPONSIVE */
-    @media (max-width: 1000px) {
-      .nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .hero-content { max-width: 100%; padding: 0 28px 64px; }
-      .about { padding: 80px 28px; }
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .eden-sec { padding: 56px 28px; }
-      .eden-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
-      .eden-vdivider { display: none; }
-      .eden-badge { align-self: flex-start; }
-      .events { padding: 72px 28px 48px; }
-      .ev-featured { grid-template-columns: 80px 1fr; padding: 32px 24px; gap: 24px; }
-      .ev-featured-divider, .ev-featured-arrow { display: none; }
-      .ev-row { grid-template-columns: 70px 1fr; }
-      .ev-arr { display: none; }
-      .activities { padding: 48px 28px 80px; }
-      .act-tiles { grid-template-columns: 1fr; }
-      .act-tile { padding: 32px 28px; }
-      .past-teaser { padding: 64px 24px; }
-      .past-teaser-grid { grid-template-columns: 1fr 1fr; }
-      .cta { padding: 80px 28px; }
-      .cta-inner { flex-direction: column; align-items: flex-start; }
-      .footer { padding: 56px 24px 32px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-      .footer-bottom { flex-direction: column; gap: 14px; }
-    }
-  
-    /* ─── TELEPHONE LIBRARY ─── */
-    .library-sec {
-      background: var(--cream);
-      padding: 100px 52px;
-      border-top: 1px solid var(--border);
-    }
-    .library-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 0.65fr 1fr;
-      gap: 88px;
-      align-items: center;
-    }
-    .library-photo {
       position: relative;
-      overflow: hidden;
-      border-radius: 3px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      z-index: 2;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 48px;
+      padding-top: 68px;
     }
-    .library-photo img {
-      width: 100%;
-      aspect-ratio: 2/3;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      transition: transform 0.7s var(--ease);
-    }
-    .library-photo:hover img { transform: scale(1.03); }
-    .library-text { }
-    .library-text .sec-label { margin-bottom: 20px; }
-    .library-text h2 {
-      font-family: var(--fd);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.08;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    .library-text h2 em { font-style: italic; color: var(--mid); }
-    .library-text p {
-      font-size: 0.97rem;
-      font-weight: 300;
-      line-height: 1.82;
-      color: var(--mid);
-      margin-bottom: 20px;
-    }
-    .library-tag {
+
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.68rem;
-      font-weight: 700;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--warm);
-      margin-top: 8px;
+      color: var(--accent);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.3s ease forwards;
     }
-    .library-tag::before {
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s ease forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.82);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s ease forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s ease forwards;
+    }
+    .hero-cta:hover {
+      background: #c94412;
+      transform: translateY(-1px);
+    }
+    .hero-cta svg { transition: transform 0.2s; }
+    .hero-cta:hover svg { transform: translateX(3px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 48px; }
+    .container { max-width: 1140px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
       content: '';
       width: 20px;
-      height: 1.5px;
-      background: var(--warm);
+      height: 2px;
+      background: var(--primary);
     }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .intro-text h2 { margin-bottom: 24px; }
+    .intro-text p {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+    .intro-accent {
+      position: relative;
+      padding: 40px;
+      background: var(--surface);
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+    .intro-accent blockquote {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--text);
+    }
+    .intro-accent cite {
+      display: block;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-style: normal;
+    }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights-section { background: var(--bg); }
+    .highlights-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .highlights-header h2 { margin-bottom: 12px; }
+    .highlights-header p {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .highlight-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .highlight-card:nth-child(2)::before { background: var(--secondary); }
+    .highlight-card:nth-child(3)::before { background: var(--accent); }
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .highlight-card:hover::before { transform: scaleX(1); }
+
+    .highlight-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.4rem;
+    }
+    .highlight-card:nth-child(1) .highlight-icon { background: rgba(232,84,26,0.1); }
+    .highlight-card:nth-child(2) .highlight-icon { background: rgba(43,158,195,0.1); }
+    .highlight-card:nth-child(3) .highlight-icon { background: rgba(201,150,42,0.1); }
+
+    .highlight-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .highlight-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── EVENTS ── */
+    .events-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .events-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    .events-header a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .events-header a:hover { gap: 10px; }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 32px;
+      align-items: center;
+      padding: 28px 32px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .event-row:hover {
+      border-color: var(--primary);
+      box-shadow: 0 2px 12px rgba(232,84,26,0.08);
+    }
+
+    .event-date {
+      text-align: center;
+      padding: 14px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .event-date .day {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--primary);
+    }
+    .event-date .month {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    .event-info h3 {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .event-meta {
+      display: flex;
+      gap: 20px;
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+    .event-meta span { display: flex; align-items: center; gap: 4px; }
+
+    .event-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      background: rgba(43,158,195,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-section {
+      background: var(--primary);
+      padding: 80px 48px;
+    }
+    .cta-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .cta-text h2 {
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .cta-text p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      white-space: nowrap;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 56px 48px 32px;
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 32px;
+    }
+    .footer-brand .brand-name {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-brand .tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+    .footer-brand .reg {
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.04em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .library-sec { padding: 72px 28px; }
-      .library-inner { grid-template-columns: 1fr; gap: 40px; }
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
+      section { padding: 64px 24px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .event-row { grid-template-columns: 90px 1fr; }
+      .event-tag { display: none; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+      .hero-content { padding: 0 24px; padding-top: 68px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav-brand-link">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAAA0CAYAAACD4noEAAATmElEQVR4nO2ce3AUx53Hfz3dM7Ozsw+9pZWEHiDAgEQgyCYBPyQ7jmNhYxKOtSE5CHYOHJ+d5Crl5O6cupUqrlSSS4q48iDiIRPfUeZW9hkSWyZQnCQQNg8BxkgWLwkkgVbosVrtzu7O7kx33x9oCSbOmbNJJCF9qrZUGo1mun/7rV93f389AzDJJJPcejjnqL6+nox2OyaZZJJJ/hzOOQIA2LhxY8GOHTu+c/2xST45wmg3YDSpra0VAADmzp37OZfLdd/1xyb55Ez4AHLOUWdn56N9fX0Br9eLW1tb+Wi3abwzoUVls9kIQoirqhpTVbXA7XbTOXPmTA5/n5IJKyqv14srKipi1dXV0zjn/Q6HQzx+/Phst9tNPR7PhI3LrWBCLqM9Ho/gdrvpjh07Hs3IyPjX4eHhz3V3d4OmaVs554tra2sns9WnYMIFL7G6O378uKulpaXWZrO9GwgEgpzzRS6X60EA+NKSJUv2er1e7Ha76Sg3d1wy4dJ8bW2tgBDi8Xh8XkpKSgmlVJ0+fbpWUFDQqSiKYJrmCy0tLdJot3M8M+FE1draigAANE37+2AwaNd1/emBgYGf+3y+da2trWYsFrvX5/N9xu12U6/Xi0e7veORCTenmjNnDgcAME2z2jTNJ/r6+uLDw8MIABDnHIdCIRSPx78CAEdHt6XjlwmXqRJEIpEwxjjudDrxjBkzRJfLRQAgzDmHcDh832i3bzwzYUVFCJGmTJmy0el04suXL3NRFPXp06dvppTGDMN4cbTbN56ZEKLinP9ZPxVFoYODgzwSibQXFhamaJp2X1JSkoIxvqDr+oSIy1+L2z54nHOEEGJwg30iKiIQQkhqcgplpvkdR5Kjqr+//x0sS3bV4cD8BgN0stB889zWohoRFN+/f/9CAPhQTY/FmSAIQhhhYcaA3/+t9nPtvYqifMahqDknmpsvo6oqNjQ0dC0+CKHJmuBNctuKKpFZ2tvbM0Oh0M927dpVBAAwdepUAQCAcG4yxtIjMf2VtIyMF2ZOn/6eTOTLcS1irH3iq88FOq9MW79+vcE5F99+++0dif+fzFgfz20rqoTJefjw4YLBwcH+QCCwuLq6Wvzggw+k6upqkWEsGYYRcDqckqYFVzGAbyTZVGTBRIwFw6vb2lqaLh56r/D3b7+9wGq1LhAEYUbiuqPdt7HObe9T5ebmRiORyIOapjWuWbPGAAADAGDnzp3FnPMDkiytj+rhXXFdLw5pWg7jrPm9k+8li0hQUlJTf/rEM99Y39TUZBNF8VkAqBvd3owPbntRGYaBkpOTbV1dXfdv27ZtummaBGMMfr//UVGSUgP+oQsmpSgcDDL/4JBDJqQwJTujLaJFolHEltfU1PQJgpCelpaWNNp9GS/c7qJCFy9etCiKsjUnJ6efUuqUJIkahjGgKEpjMBh83DSMIULII4qqFgJjPaGh4M8Agyqqit2g7DiYplWSJG80Gi2Y3BJzc9zuouKKomQnJSUZDz/88Asj1gK89tpryzVNW9jV1XV/c3PzuwsXLlztcrncqelp01w5OVmfvWf+j+zI3pe4yM6dO79gmuaLVVVVbPKpm4/ntlvJcM7Rpk2bSE9PD5ozZ05KMBh81GazPWyxWPqHhobqU1NTf0op7eOcTxdF0QYAAuMcnA4HOBwO6B/oP26aZmFqSuoRhFB9d3d3NyFkeyQSubBo0aIHCgoKLni9Xqm1tZUl7pmdnY0AABYsWAAdHR1som+ZGS+iQvX19RgAoKysjAEAvxnfqLa2diUh5FstLS2/1XVdcjgcVrvdnkspPWeapjUnJyeTMQaMMQQAMYyx0N3d3amqavr8+fNzg8GgNjAw4EMIzc/MzFyNEOoIBAILvvzlLwf+yv0d14wXUX0UqLq6msyYMYOXlZVRAEAIIXb48OGss2fPrtN1PZSens4EQVi8dOlSN8DVck1iCMQYA6Ufn1AwxvDjH/949ty5c4/7fD5ZFMVthmG8PzLhZ4IggNVqtSqKgqxWKzJNs+PChQs7dF0XLBYLA7iawUKhEC8vLzf/mgEZK4xpUSUc8XfeeSels7Pz6wUFBSIAnNJ1/YPy8vKLN55fXV0tTps27W7O+WsdHR13ZWRk0GAw+F1FUa5ompZTVFT00KVLl/5H1/X27Ozsh3Vdb+vv729njDGMMTDGMKWU22w2WVEUVZblLzqdzrmXLl3aQwg5rGnav8VisTZVVZfpuq4TQhBjjBqG0ZiWllbEGINAILBv/fr1X/jbR2vsMKZFlaClpUU6derUlPz8/NRgMPglRVFkTdOyw+Fw2Gaz9R8+fPiXzz77rJGenh76yU9+MnPevHlvPfTQQ0V79+51yrL8B0EQXjpz5swPMcbfPX369KHp06cTm832Nbvdfry7u/tSZmamIx6Pm5qm6YZhsLy8vOLMzMydvb29ZYyxikgkcjA7O7urq6vrhK7r0cLCwvsDgcDlcDgs2Gw2IxAIvB4MBktVVSUWi+XK4ODgRlmWcUpKimGxWHBWVlZaLBbryMjI+PX27duNqqoq9vG9Hr+MiZXMSOkjUfj9M4qLi+MA0D7yOQIA0NDQMF+SpKd6e3unFhcXv7979+7gb37zm30FBQUpnPMGzrkTYzz85ptv9ququggAzufl5fWlpqaW+f1+hjH+3Ny5c+v8fr/VNM3doig2Pfnkk8sBANra2ujRo0ffWr16dePGjRtRVlbWwsbGxouZmZlACFHi8egc0zTnCYLgME2TEkIyXS4XcjgcRzjnZyVJqvT7/QAA4Pf7qd/v32iz2bJdLldSVVVVXyID/y1iOxqMi0wF8KeaW0NDAy4rK2PXC7ClpSXl/fffdzkcjqf7+/uXxeNxu6qqccZYnaIoR2VZ/sOZM2e++fzzz//L66+/njs4OAiMsWdKS0tf7O7u/l5/f79HUZRWWZY/s2LFClZXV/eYLMvLsrKy1oVCoa8Gg8F/3rt374rZs2efNAwDCCF1JSUl37/rrrtaAAC2bt16oqioiN577713btiwYUF6evphXdcFQkhzUVHRj+655543Rituo8GomnkJobz77rsFBw8eXNTc3Cz+JYMRIcQRQry8vNxECDGPxyM0NzeLK1aswMXFxf5Vq1a1PvLII8+VlJTMV1X1Cuc8nTG2JhQKfWfp0qVdsVhM93g8luXLl19at27dpUgkYpSWlkZUVT0za9YswBhvd7vdtLa2VojH44NWq/WRs2fPfnd4eLgyFov9W1pams0wDADgcUppxdGjRzbV19dbXnrpJXlk0m5UVlaizMzM2QAwnJGR8Q0AuOd6QU2UYvSoimrTpk0EAODixYvf7+npOXjixImvVFVVcY/H87HDclVVFSstLTVqa2sp5xxxzlFdXZ1cWlo6sHjx4vuys7N/JctylDEW5ZwjwzAwALDEUKuqKm1ubr5DkqQZkiTtsdvt1rq6urlut5uqqhpljCXJspwviuJ/Ll269L8AQKXUAMYMsCgEYrFwoLy8XP/2t78dEwTB2dXVNbRmzZqSqVOnbiSEvPDYY49tXbt2rd7Z2Zm8Z8+epxsbG6cghPhEENaYKDuEQiHOOTfD4bAIN+x7uhkSWayioiLm8XiEwsLC3gceeOC54uLiBYqinBk5hwIAVFZWIgDghmHM8/l8J3t6egoWLlz40NDQkDMUCh2rqanZQimd1dvbW221Wr+Yl5f3W6/Xi0URmQIWIG7GhXAkDGnpqTPq6/f+YMOGDcuysrLecDqdSiAQkGRZtsqyPLhr164fbt68eeuJEyfO9/T0rBZFccDj8ZDbeS6VYEyIinPuSE5OJk6nUwYAKCsr+8TXqqqqYomXmJWUlLRpmna8srISEUI+tAhACFn6+vqk3t7eL9XU1Dzk9/sf6e/vJ9FodKndbscul+sZQRAyDMPIdbvdFCERYUEALGCkR6MUYzwtFA6tTk1NLZw2bdqenJyc96LRqOn3+9+JxWI7hoeHf6Cq6pNJSUkplNKeRYsWRT9dlMYPoyqqnp4eCgDgcDh2qKpaOWXKlKMA11zzTwxCiJeVlVGPxyOIoqgAAEjS1edDKysrr53ncDh4ampqlqqqu10uV2F2djZHCB1ZvHjxTlmW/xAKhdoYY8cAAGKxGIvH4wAAIIoSRKM6N2LGeV03O7q6uix+v//SokWL3nc6nZV2ux1UVQ1KknRMEIRKq9X6/ZFb3tZWQoJRtRQSfs3KlSvfBIA3E8f/krXwSa6/efNmBgBAKeU+n+/a0CNJEqSnp6O2tjYTIUQkSTKTk5OJaZrSqVOnslRVLQWAsyN2BhBCAGMMJmXAORfi8TiEI+HZBQW5DxuGcZhSakUI0Z07dyqiKKJYLNaycuXK+xBC5vXtuRX9GuuMieHP6/Xi/2vl9/+Fc45qa2tFzjli7Or3iDEW7777bumG8yAWiyHDMCAajSJd1yEWixmqqooWi8XFGPvQ/AchlPiJTNPknEO+LMuSqqphSZK2jNynLRQKNdjt9l8ihMy6ujp5IkzOr2dMmJ8jVf1bVtkfmQzHAa6Wbqqqqtjvfve7e+bMmfMBAHg552jLli3AOQeEEBBCgFIK0WgUdF1HAACmaQLnf9KUruumw6Fe+10QBB6L6Xzv3rd+/uKLP20FuFZWOvfyyy+/+cQTT+wYqTXGblW/xgtjQlS3ioRT/corr2SoqvoMQug/fD6fBnB1Yo4QkhOrr82bN1OE0DVhcc4hHo+DYRgIY0zp1WqzkLhmZmZmOucUBCQA41ezH0IIZWTkpnDO0bFjxwhCyDh06JDD5/OljryHYUIMdzcyJoa/Twka+YDb7RYAALq6urJVVfWkpKTMxRibAACEkCHTNGPHjh3Lb2xsnMIYc0QiEZAkCRhjwDkHzjmIoujMz88/ffny5VbOuYoQ4h6PR7Db7bMEgQBnAiAgAJwAowK3WGzitm3b5NLSUqO9vT0vGAyeQAh91u1208rKygn5go9xKyqv14tHsgEHAM45FyoqKkSv14uTk5OZz+czAoHAnRjjZQAAw8PDYQCIMMb+UZKk53NycpxwdV8WM02TYYxZKBRi0WgUIYQYxjiQnp6e097enllVVcUsFssfMcYQi8cFzgE4BxyNRllysv3e7Ozsffv3708XRbH//PnzWNd16yiGZtQZt6Jyu930+h2WCCG2du1a/aqnhGKEEHLlyhV5aGhIBABwOBy6YRiX7rzzzu99/vOf/5aiKG2KoiAAEAFAiMfjIgAImqYZAACXL19O6+zs7HI4HEknT54sWbZs2bmkpKTdOTk5MQBOEULUYrHglpaW3aIo9siynJOXlxellEZEUZxQE/MbGXdzKo/HI1RWVkJTU9Pf2Wy2slAolBeNRjVVVZ2aprXZ7faccDg85fz580xVVUPX9SgAwKpVq76OEGL19fWEUpoZDofv45z3JCUlvSfLckkkEgmnpKQoDocj59VXX50WCoXqsrKyKpqamrZfuXIlcujQIRFj3OlwOAaSkpJzh4aG4rIsM0rpsCRJWZzzfM75yS1btuBgMDjaYRpVxl2mKisrExBCjFK6IhqNfpNS2hyPx8+Ew+HTCKEZpmkqpmmmWywW4JynA0AGwFU7oLq6WiwvLzfD4XAB59w3MDAwkJWV9UZaWtqG1NTUjYSQXxBCXhZF8bHc3NyW/Pz8Vy0Wy7rW1tblPT09yzs6Ov7J4XB0EEKAMSYpiiLqui5zzpMQQgJCiJumyRPWw0RlXGWqEb+HHjx4MANj/A4A6OXl5ZU3nrdr165f5+bmPhMOh+2CIPyqrq5O1jSNp6enC83NzdDf35/kdDpfPH369NSnnnpqy83eGyHEH3zwwX9PTk5eiDE+qev62zNnzvQJgrDBMIwP2tra7A0NDRwhZNziro8rxoWort9LBQAgiuJMwzBUm832e6/XK7nd7jgAwN69e1OHhoZMTdPekiTJsmzZsqc/6gvet2/fpXA4bCWE2Ovq6hwVFRXBuro6ecmSJbHrvanrSVgRBw4caJ81a1awpKRkzR133HF65M81AAD79+//76Kiojt6e3uHbn0Uxg/jQlTXVfZNAIAjR45opmn2zp8/v5ZzLu7Zs2clIWQR5/xrTqeTE0Ik0zS379u373sHDhywUkpjpmkiSZLANE0QBIFQSvnUqVOzOOfhmpoaraKi4o9er9c5MDCQKssymKaJAACSk5MRpZTn5eWtkGU5TxAEXdO00xcvXgSv1yutWLHCbGhoEMrKytjBgwfXYIwbcnNzE5OqCelTjfnBv7m5WTx37lye0+kEl8tlHx4evl/X9Uyn07mYMVYTjUafczqd80KhEGiads0Ft1qtIIoiYPwnqwhjnCjNgNPphGg0Guzs7HyDUurLz89Xh4aGmru7u1MsFgumlHJCCKiqCqIogs1my3I6nVZCSHdpaekvJqJTfrOM5UyFAIBHo1Eb53wZQogbhqERQnZxzp2dnZ1pGON/EASh5MqVK8OEEGaaZkJBKBwOU8YY03UdEELXXHMAAEIIam9vZxhjmXMeBoAsn8+34/HHH99zs/udPmqfOeccJYboifI41kcx5jPVX6KxsfFZzrlzy5Ytv0hOTsadnZ0cACAtLe1D582cORMGBgY+dCwtLQ0sFgtqampiS5YscXLOw2vXrg0AAHzUrtPE/i673Y5CoRAvKyujE2Gz3SdlPIjq+qeT+ci2mFv+hV7/oOkkn47/BfEhfzX+4YhUAAAAAElFTkSuQmCC" alt="Fondazzjoni ta' Klula" class="nav-logo-img" />
-    <div class="nav-brand-text">
-      <span class="nav-brand-name">Fondazzjoni ta' Klula</span>
-      <span class="nav-brand-reg">VO/0420</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="events.html">Events</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-photo">
-    <img src="images/hero-knisja.jpg" alt="Santa Lucija, Gozo" fetchpriority="high" />
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-wash"></div>
-  <div class="hero-wash-2"></div>
-  <div class="hero-wash-3"></div>
-
-  <div class="hero-content">
-    <h1 class="hero-headline">
-      <span class="ln">Gozo.</span>
-      <span class="ln">Culture.</span>
-      <span class="ln">Alive.</span>
-    </h1>
-    <p class="hero-desc">Heritage, arts, and community — rooted in Santa Lucija, reaching across Gozo.</p>
-  </div>
-  <div class="hero-scroll" onclick="document.querySelector('.about').scrollIntoView({behavior:'smooth'})">
-    <span>Scroll</span>
-    <div class="hero-scroll-chevron">
-      <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-  </div>
-</section>
-
-<!-- WHO WE ARE -->
-<section class="about">
-  <div class="about-inner">
-    <div class="about-text">
-      <div class="sec-label">Who We Are</div>
-      <h2>A cultural foundation<br><em>rooted in Gozo</em></h2>
-      <p>Fondazzjoni ta' Klula is a voluntary organisation based in Santa Lucija, Gozo. We safeguard the village's heritage, bring the community together through cultural programming, and share what makes this part of the island worth knowing — with everyone who's curious enough to look.</p>
-      <a href="about.html" class="btn-arrow">
-        About the Fondazzjoni
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-    <div class="about-photo">
-      <img src="images/santalucija_countryside.jpg" alt="Santa Lucija countryside, Gozo" />
-    </div>
-  </div>
-</section>
-
-
-<!-- EDEN RECOGNITION -->
-<section class="eden-sec">
-  <div class="eden-inner">
-    <div class="eden-logo-wrap">
-      <img src="images/eden-award.jpg" alt="European Destinations of Excellence" />
-    </div>
-    <div class="eden-vdivider"></div>
-    <div class="eden-text">
-      <div class="sec-label">Recognition</div>
-      <h2>European Destination<br><em>of Excellence</em></h2>
-      <p>Santa Luċija, Gozo was awarded the <strong>European Destination of Excellence (EDEN)</strong> by the European Commission in 2008 — one of only eight destinations ever selected across Malta and Gozo. The award recognised the village's outstanding commitment to sustainable tourism and its rich local intangible heritage. This distinction was awarded through the work of the Fondazzjoni.</p>
-    </div>
-    <div class="eden-badge">
-      <div class="eb-year">2008</div>
-      <div class="eb-label">Winner</div>
-      <div class="eb-country">Malta &amp; Gozo</div>
-    </div>
-  </div>
-</section>
-
-<!-- TELEPHONE LIBRARY -->
-<section class="library-sec">
-  <div class="library-inner">
-    <div class="library-photo">
-      <img src="images/phonebox-library.jpg" alt="The Ta' Klula Free Library" />
-    </div>
-    <div class="library-text">
-      <div class="sec-label">Community Initiative</div>
-      <h2>The Ta&#39; Klula<br><em>Free Library</em></h2>
-      <p>Housed within the public telephone booth in Santa Lucija's main square, next to St. Lucija Church, is a small community library managed by the Fondazzjoni ta' Klula.</p>
-      <p>The collection includes books in various languages and across a wide range of subjects, suitable for both adults and children.</p>
-      <p>We invite you to take a book to enjoy at your leisure and kindly return it once you have finished, so others may benefit. You are also welcome to contribute to the collection by leaving a book for fellow readers.</p>
-      <div class="library-tag">Open to everyone &mdash; take a book, leave a book</div>
-    </div>
-  </div>
-</section>
-
-<!-- EVENTS -->
-<section class="events">
-  <div class="events-inner">
-    <div class="events-header">
-      <div>
-        <div class="sec-label">What's On</div>
-        <h2>Upcoming events</h2>
-      </div>
-      <a href="events.html" class="btn-arrow">
-        All events
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-    <div id="events-container"><p class="ev-loading">Loading events&hellip;</p></div>
-  </div>
-</section>
-
-<!-- ACTIVITIES -->
-<section class="activities" id="activities">
-  <div class="activities-inner">
-    <div class="activities-header">
-      <div class="sec-label">What We Do</div>
-      <h2>Culture, community<br>and heritage</h2>
-    </div>
-    <p class="act-lead">Throughout the year, the Fondazzjoni brings together residents and visitors around the Wine Festival, quarterly literary evenings with Inizjamed, seasonal heritage and nature walks, and the candlelit Luminary Evening on the feast of Santa Luċija. A programme that is growing.</p>
-    <div class="act-tiles">
-      <div class="act-tile">
-        <div class="act-tile-num">01</div>
-        <div class="act-tile-body">
-          <h3>Culture</h3>
-          <p>Celebrating Gozitan culture through events, arts, and shared experiences that bring people together.</p>
-        </div>
-      </div>
-      <div class="act-tile">
-        <div class="act-tile-num">02</div>
-        <div class="act-tile-body">
-          <h3>Heritage</h3>
-          <p>Preserving and promoting the history, traditions, and natural environment of Santa Lucija and Gozo.</p>
-        </div>
-      </div>
-      <div class="act-tile">
-        <div class="act-tile-num">03</div>
-        <div class="act-tile-body">
-          <h3>Community</h3>
-          <p>Building connections between residents, visitors, and all those who care about this place and its future.</p>
-        </div>
-      </div>
-    </div>
-    <p class="act-cta-line">
-      <a href="events.html" class="btn-arrow">
-        See what's coming up
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </p>
-  </div>
-</section>
-
-<!-- PAST EVENTS TEASER -->
-<section class="past-teaser">
-  <div class="past-teaser-inner">
-    <div class="past-teaser-header">
-      <div>
-        <div class="sec-label">Track Record</div>
-        <h2>From past events</h2>
-      </div>
-      <a href="events.html#past" class="btn-arrow">
-        See all past events
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-    <div class="past-teaser-grid" id="past-teaser-grid"></div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <div class="cta-inner">
-    <div class="cta-text">
-      <h2>Support<br><em>what we do</em></h2>
-      <p>Join the Fondazzjoni as a member, volunteer, or supporter. Every contribution — of time, skill, or resources — helps us keep Gozitan culture alive.</p>
-    </div>
-    <a href="contact.html" class="btn-fill">
-      Get in Touch
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-main">Fondazzjoni ta' Klula</span>
+      <span class="brand-sub">Gozo · VO/0420</span>
     </a>
-  </div>
-</section>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="what-we-do.html">What We Do</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="f-name">Fondazzjoni ta' Klula</div>
-      <div class="f-tag">Gozo. Culture. Alive.</div>
-      <div class="f-reg">Registered Voluntary Organisation &middot; VO/0420</div>
-    </div>
-    <div class="f-col">
-      <h4>Pages</h4>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <h4>Contact</h4>
-      <p>Santa Lucija, Gozo, Malta</p>
-      <p><a href="mailto:taklula.gozo@gmail.com">taklula.gozo@gmail.com</a></p>
-      <p style="margin-top:10px;"><a href="https://www.facebook.com/taklula" target="_blank" rel="noopener">Facebook</a></p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Fondazzjoni ta' Klula. All rights reserved.</span>
-    <div class="f-social">
-      <a href="https://www.facebook.com/taklula" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Fondazzjoni ta' Klula</div>
+      <h1>Gozo.<br><em>Culture.</em><br>Alive.</h1>
+      <p class="hero-sub">Celebrating the heritage, culture, and community of Gozo — rooted in Santa Lucija, open to everyone.</p>
+      <a href="what-we-do.html" class="hero-cta">
+        Discover What We Do
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
-  </div>
-</footer>
-
-<!-- EVENT OVERLAY -->
-<div class="ev-overlay" id="ev-overlay">
-  <div class="ev-overlay-backdrop" id="ev-backdrop"></div>
-  <div class="ev-overlay-panel">
-    <div class="ev-panel-poster" id="ev-panel-poster">
-      <button class="ev-panel-close" id="ev-panel-close" aria-label="Close">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </button>
+    <div class="hero-scroll">
+      <svg width="16" height="20" viewBox="0 0 16 20" fill="none"><rect x="5.5" y="1.5" width="5" height="9" rx="2.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="5" r="1" fill="currentColor"><animate attributeName="cy" values="5;8;5" dur="1.5s" repeatCount="indefinite"/></circle><path d="M4 15l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Scroll
     </div>
-    <div class="ev-panel-body" id="ev-panel-body"></div>
-  </div>
-</div>
+  </section>
 
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" role="dialog" aria-modal="true">
-  <button class="lb-close" id="lb-close" aria-label="Close">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-  </button>
-  <button class="lb-prev" id="lb-prev" aria-label="Previous">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-  <div class="lb-img-wrap"><img id="lb-img" src="" alt=""/></div>
-  <button class="lb-next" id="lb-next" aria-label="Next">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-  <div class="lb-thumbs" id="lb-thumbs"></div>
-  <div class="lb-meta">
-    <div class="lb-caption" id="lb-caption"></div>
-    <div class="lb-counter" id="lb-counter"></div>
-  </div>
-</div>
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <div class="section-label">Who We Are</div>
+        <h2>A cultural foundation rooted in Gozo</h2>
+        <p style="margin-top: 24px;">Fondazzjoni ta' Klula is a voluntary organisation dedicated to safeguarding and celebrating Gozo's cultural heritage. Rooted in Santa Lucija, we bring communities together through events, arts, oral history, and shared traditions — for residents, visitors, and anyone who loves this island.</p>
+      </div>
+      <div class="intro-accent">
+        <blockquote>"Gozo's heritage is alive in its people, its streets, its celebrations — and it belongs to everyone."</blockquote>
+        <cite>Fondazzjoni ta' Klula</cite>
+      </div>
+    </div>
+  </section>
 
-<script>
-  // Nav
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('light', window.scrollY > window.innerHeight - 80); }, { passive: true });
-  if (window.scrollY > window.innerHeight - 80) nav.classList.add('light');
+  <!-- HIGHLIGHTS -->
+  <section class="highlights-section">
+    <div class="container">
+      <div class="highlights-header">
+        <div class="section-label">What We Do</div>
+        <h2>Heritage, culture, community</h2>
+        <p style="margin-top: 12px;">Three pillars, one mission — keeping Gozo's culture alive.</p>
+      </div>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-icon">🏛</div>
+          <h3>Heritage</h3>
+          <p>Documenting and preserving the stories, traditions, and places that make Gozo's communities unique.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🎭</div>
+          <h3>Culture</h3>
+          <p>From literary evenings to open-air events, we bring cultural experiences to life — rooted in the village, with an outlook across Gozo.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🤝</div>
+          <h3>Community</h3>
+          <p>Rooted in Santa Lucija, welcoming to all. Our events are designed for everyone — locals and visitors alike.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Events from events.json
-  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  function parseDate(s) { const [y,m,d] = s.split('-').map(Number); return new Date(y,m-1,d); }
+  <!-- EVENTS -->
+  <section class="events-section">
+    <div class="container">
+      <div class="events-header">
+        <div>
+          <div class="section-label">What's On</div>
+          <h2>Upcoming events</h2>
+        </div>
+        <a href="events.html">
+          All events
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="events-list">
 
-  function renderEvents(events) {
-    const container = document.getElementById('events-container');
-    if (!container) return;
-    const today = new Date(); today.setHours(0,0,0,0);
-    const upcoming = events.filter(e => parseDate(e.date) >= today).sort((a,b) => parseDate(a.date)-parseDate(b.date));
-    if (!upcoming.length) { container.innerHTML = '<p class="ev-empty">No upcoming events right now — check back soon.</p>'; return; }
-    const arrowSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 6l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    const smallArrow = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    let html = '';
-    const first = upcoming[0];
-    const d0 = parseDate(first.date);
-    const meta0 = [first.time, first.location, first.free ? 'Free entry' : null].filter(Boolean);
-    html += '<div class="ev-featured" data-ev-id="'+first.id+'"><div class="ev-featured-date"><div class="fd">'+d0.getDate()+'</div><div class="fm">'+MONTHS[d0.getMonth()]+' '+d0.getFullYear()+'</div></div><div class="ev-featured-divider"></div><div class="ev-featured-body">'+
-      (first.tag ? '<div class="ev-featured-tag">'+first.tag+'</div>' : '')+
-      '<h3>'+first.title+'</h3><div class="ev-featured-meta">'+meta0.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-featured-arrow">'+arrowSvg+'</div></div>';
-    upcoming.slice(1).forEach(ev => {
-      const d = parseDate(ev.date);
-      const meta = [ev.time, ev.location].filter(Boolean);
-      html += '<div class="ev-row" data-ev-id="'+ev.id+'"><div class="ev-date"><div class="d">'+d.getDate()+'</div><div class="m">'+MONTHS[d.getMonth()]+' '+d.getFullYear()+'</div></div><div class="ev-body"><h3>'+ev.title+'</h3><div class="ev-meta">'+meta.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-arr">'+smallArrow+'</div></div>';
+        <div class="event-row">
+          <div class="event-date">
+            <div class="day">14</div>
+            <div class="month">Jun 2026</div>
+          </div>
+          <div class="event-info">
+            <h3>Wine Festival 2026</h3>
+            <div class="event-meta">
+              <span>🕕 18:00</span>
+              <span>📍 Santa Lucija Village Square</span>
+            </div>
+          </div>
+          <span class="event-tag">Festival</span>
+        </div>
+
+        <div class="event-row">
+          <div class="event-date">
+            <div class="day">3</div>
+            <div class="month">Jul 2026</div>
+          </div>
+          <div class="event-info">
+            <h3>Literary Evening with Inizjamed</h3>
+            <div class="event-meta">
+              <span>🕖 19:30</span>
+              <span>📍 Venue TBC, Santa Lucija</span>
+            </div>
+          </div>
+          <span class="event-tag">Arts</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Be Part of the Story</h2>
+        <p>Join us as a member, volunteer, or supporter. Gozo's heritage belongs to all of us.</p>
+      </div>
+      <a href="contact.html" class="cta-btn">
+        Get in Touch
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name">Fondazzjoni ta' Klula</div>
+          <div class="tagline">Gozo. Culture. Alive.</div>
+          <div class="reg">Registered Voluntary Organisation · VO/0420</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Fondazzjoni ta' Klula. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/taklula" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav shadow on scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
     });
-    container.innerHTML = html;
-  }
+  </script>
 
-  const fallbackEvents = [
-    {id:"evt-001",title:"Wine Festival 2026",date:"2026-06-14",time:"18:00",location:"Santa Lucija Village Square",description:"Our annual celebration of Gozitan wine and local produce. Free entry, open to all.",tag:"Festival",free:true,poster:"images/event-winefestival.jpg"},
-    {id:"evt-002",title:"Ġimgħa Stejjer — Literary Evening",date:"2026-07-03",time:"19:30",location:"Venue TBC, Santa Lucija",description:"Our quarterly literary evening in partnership with Inizjamed — poetry, prose, and good conversation.",tag:"Arts",free:true,poster:"images/event-gimghastejjer-may.jpg"}
-  ];
-  fetch('events.json').then(r=>r.json()).then(d=>{window.__allEvents=d;renderEvents(d);}).catch(()=>{window.__allEvents=fallbackEvents;renderEvents(fallbackEvents);});
-
-  // Past events teaser
-  (function() {
-    var ph = '<div class="past-tile-ph"><svg width="36" height="36" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#9E958C" stroke-width="1.5"/><circle cx="14" cy="17" r="3" stroke="#9E958C" stroke-width="1.5"/><path d="M4 26l8-6 6 5 5-4 9 7" stroke="#9E958C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
-    var _pastData = [];
-    function renderTeaser(events) {
-      var grid = document.getElementById('past-teaser-grid');
-      if (!grid) return;
-      var top = events.slice(0,3);
-      if (!top.length) { grid.closest('.past-teaser').style.display='none'; return; }
-      grid.innerHTML = top.map(function(ev) {
-        var hasCover = ev.photos && ev.photos.length;
-        var img = hasCover ? '<div class="past-teaser-tile-img"><img src="'+ev.folder+'/'+ev.photos[0]+'" alt="'+ev.title+'" loading="lazy"/></div>' : ph;
-        return '<div class="past-teaser-tile"'+(hasCover?' style="cursor:pointer;"':'')+' data-past-id="'+ev.id+'">'+img+'<div class="past-teaser-tile-info"><div class="past-teaser-tile-year">'+ev.year+'</div><div class="past-teaser-tile-title">'+ev.title+'</div></div></div>';
-      }).join('');
-      grid.addEventListener('click', function(e) {
-        var tile = e.target.closest('[data-past-id]');
-        if (!tile) return;
-        var id = tile.getAttribute('data-past-id');
-        var ev = _pastData.find(function(x){return x.id===id;});
-        if (!ev || !ev.photos || !ev.photos.length) return;
-        var photos = ev.photos.map(function(f){return{src:ev.folder+'/'+f,caption:ev.title+' — '+ev.year};});
-        if (window.__openLightbox) window.__openLightbox(photos,0);
-      });
-    }
-    fetch('past-events.json').then(function(r){return r.json();}).then(function(d){_pastData=d;renderTeaser(d);}).catch(function(){renderTeaser([]);});
-  })();
-
-  // Event overlay
-  (function(){
-    var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
-    function pDate(s){var p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
-    function fDate(s){var d=pDate(s);return d.getDate()+' '+MON[d.getMonth()]+' '+d.getFullYear();}
-    function openOv(ev){
-      var ov=document.getElementById('ev-overlay');
-      var po=document.getElementById('ev-panel-poster');
-      var bo=document.getElementById('ev-panel-body');
-      if(!ov||!po||!bo)return;
-      var cb=po.querySelector('#ev-panel-close');
-      po.innerHTML='';if(cb)po.appendChild(cb);
-      if(ev.poster){var im=document.createElement('img');im.src=ev.poster;im.alt=ev.title;po.appendChild(im);}
-      else{var ph=document.createElement('div');ph.className='ev-panel-poster-placeholder';ph.innerHTML=(ev.tag?'<div class="p-tag">'+ev.tag+'</div>':'')+'<div class="p-title">'+ev.title+'</div>'+'<div class="p-date">'+fDate(ev.date)+'</div>';po.appendChild(ph);}
-      var det='<div class="ev-panel-detail"><span class="d-label">Date</span><span class="d-value">'+fDate(ev.date)+'</span></div>';
-      if(ev.time)det+='<div class="ev-panel-detail"><span class="d-label">Time</span><span class="d-value">'+ev.time+'</span></div>';
-      if(ev.location)det+='<div class="ev-panel-detail"><span class="d-label">Location</span><span class="d-value">'+ev.location+'</span></div>';
-      bo.innerHTML=(ev.tag?'<div class="ev-panel-tag">'+ev.tag+'</div>':'')+'<div class="ev-panel-title">'+ev.title+'</div>'+(ev.description?'<p class="ev-panel-desc">'+ev.description+'</p>':'')+'<div class="ev-panel-details">'+det+'</div>'+(ev.free?'<div class="ev-panel-free">Free entry</div>':'');
-      ov.classList.add('open');document.body.style.overflow='hidden';
-    }
-    function closeOv(){var ov=document.getElementById('ev-overlay');if(ov)ov.classList.remove('open');document.body.style.overflow='';}
-    document.addEventListener('click',function(e){
-      var t=e.target;
-      if(t.id==='ev-backdrop'||t.closest('#ev-panel-close')){closeOv();return;}
-      var card=t.closest?t.closest('[data-ev-id]'):null;
-      if(!card)return;
-      var id=card.getAttribute('data-ev-id');
-      var all=window.__allEvents||[];
-      for(var i=0;i<all.length;i++){if(all[i].id===id){openOv(all[i]);return;}}
-    });
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeOv();});
-    window.__openOverlay=openOv;window.__closeOverlay=closeOv;
-  })();
-
-  // Lightbox
-  (function(){
-    var _photos=[],_idx=0;
-    var lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next'),lbClose=document.getElementById('lb-close'),lbThumbs=document.getElementById('lb-thumbs'),lbCaption=document.getElementById('lb-caption'),lbCounter=document.getElementById('lb-counter');
-    function show(idx){
-      if(!_photos.length)return;
-      _idx=(_idx+_photos.length)%_photos.length;_idx=(idx+_photos.length)%_photos.length;
-      var p=_photos[_idx];lbImg.classList.add('loading');
-      var tmp=new Image();tmp.onload=function(){lbImg.src=p.src;lbImg.classList.remove('loading');};tmp.src=p.src;
-      lbCaption.textContent=p.caption||'';lbCounter.textContent=(_idx+1)+' / '+_photos.length;
-      if(lbPrev)lbPrev.classList.toggle('hidden',_photos.length<=1);
-      if(lbNext)lbNext.classList.toggle('hidden',_photos.length<=1);
-      if(lbThumbs)Array.from(lbThumbs.querySelectorAll('.lb-thumb')).forEach(function(t,i){t.classList.toggle('active',i===_idx);});
-    }
-    function openLb(photos,startIdx){
-      _photos=photos;
-      if(lbThumbs){lbThumbs.innerHTML=photos.map(function(p,i){return'<div class="lb-thumb'+(i===startIdx?' active':'')+'" data-i="'+i+'"><img src="'+p.src+'" alt="" loading="lazy"/></div>';}).join('');
-        lbThumbs.querySelectorAll('.lb-thumb').forEach(function(t){t.addEventListener('click',function(){show(parseInt(t.dataset.i));});});}
-      show(startIdx||0);lb.classList.add('open');document.body.style.overflow='hidden';
-    }
-    function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
-    if(lbClose)lbClose.addEventListener('click',closeLb);
-    if(lbPrev)lbPrev.addEventListener('click',function(){show(_idx-1);});
-    if(lbNext)lbNext.addEventListener('click',function(){show(_idx+1);});
-    if(lb)lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
-    document.addEventListener('keydown',function(e){if(!lb||!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')show(_idx-1);if(e.key==='ArrowRight')show(_idx+1);if(e.key==='Escape')closeLb();});
-    window.__openLightbox=openLb;
-  })();
-</script>
 </body>
 </html>
