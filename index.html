@@ -451,8 +451,10 @@
     @media (max-width: 1000px) {
       .nav { padding: 0 24px; }
       .nav-links { display: none; }
-      .nav-toggle { display: flex; }
-      .hero-content { max-width: 100%; padding: 0 28px 64px; }
+      .nav-toggle { display: flex !important; }
+      .hero-content { max-width: 100%; padding: 0 28px 120px; }
+      .hero-scroll { bottom: 24px; }
+      .hero-desc { font-size: 0.9rem; }
       .about { padding: 80px 28px; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .eden-sec { padding: 56px 28px; }
@@ -554,9 +556,11 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 4px;
+      padding: 8px;
       background: none;
       border: none;
+      z-index: 201;
+      position: relative;
     }
     .nav-toggle span {
       display: block;
