@@ -1,16 +1,5 @@
 [
   {
-    "id": "evt-001",
-    "title": "Wine Festival 2026",
-    "date": "2026-06-06",
-    "time": "20:00",
-    "location": "Santa Lucija Village Square",
-    "description": "Our annual celebration. Free entry, open to all. Join us for an evening of great wine, local food, music, and good company in the heart of Santa Lucija.",
-    "tag": "Festival",
-    "free": true,
-    "poster": "images/event-winefestival.jpg"
-  },
-  {
     "id": "evt-002",
     "title": "Ġimgħa Stejjer — Literary Evening",
     "date": "2026-08-07",
