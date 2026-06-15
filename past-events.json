@@ -1,5 +1,14 @@
 [
 {
+    "id": "evt-001",
+    "title": "Bis-Saħħa",
+    "subtitle": "Wine Festival",
+    "year": "5 ta' Ġunju 2026",
+    "folder": "images/past-events/20260605winefestival",
+    "photos": ["cover.jpg"]
+
+  },
+    {
     "id": "gimgha-stejjer-2026-05",
     "title": "Ġimgħa Stejjer — Andre' Mangion",
     "subtitle": "Kollaborazzjoni ma' Inizjamed",
