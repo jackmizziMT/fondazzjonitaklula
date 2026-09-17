@@ -665,35 +665,36 @@
     .ev-panel-register:hover { background: #158a82; color: #fff; }
   
     /* ─── FEATURED EVENT CARD ─── */
-    .feat-event {
+        .feat-event {
       width: 100%;
       background: #0d3d3a;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      max-height: 480px;
-      overflow: hidden;
+      grid-template-columns: 5fr 6fr;
+      height: 500px;
     }
     .feat-event-poster {
-      position: relative;
+      height: 500px;
       overflow: hidden;
-      background: #1a9e96;
+      background: #0d3d3a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .feat-event-poster img {
-      width: 100%;
       height: 100%;
+      width: 100%;
       object-fit: contain;
-      object-position: center top;
+      object-position: center;
       display: block;
-      transition: transform 0.8s ease;
     }
-    .feat-event:hover .feat-event-poster img { transform: scale(1.03); }
+    .feat-event:hover .feat-event-poster img { transform: scale(1.02); transition: transform 0.8s ease; }
     .feat-event-body {
+      height: 500px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 56px;
-      gap: 0;
-      overflow-y: auto;
+      padding: 40px 52px;
+      overflow: hidden;
     }
     .feat-event-label {
       font-size: 0.6rem;
@@ -701,7 +702,7 @@
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #1a9e96;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -714,18 +715,18 @@
     }
     .feat-event-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       font-weight: 700;
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: #fff;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
     .feat-event-details {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 40px;
+      gap: 8px;
+      margin-bottom: 28px;
     }
     .feat-event-detail {
       display: flex;
@@ -738,22 +739,14 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.35);
-      min-width: 64px;
+      min-width: 60px;
       flex-shrink: 0;
     }
     .feat-event-detail .fd-val {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: rgba(255,255,255,0.85);
       font-weight: 300;
-      line-height: 1.5;
-    }
-    .feat-event-desc {
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 40px;
-      max-width: 380px;
+      line-height: 1.4;
     }
     .feat-event-register {
       display: inline-flex;
@@ -765,23 +758,23 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 16px 32px;
+      padding: 14px 28px;
       align-self: flex-start;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s;
+      margin-bottom: 12px;
     }
-    .feat-event-register:hover { background: #158a82; transform: translateY(-1px); color: #fff; }
+    .feat-event-register:hover { background: #158a82; color: #fff; }
     .feat-event-limited {
-      margin-top: 16px;
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.3);
     }
     @media (max-width: 900px) {
-      .feat-event { grid-template-columns: 1fr; min-height: auto; }
-      .feat-event-poster { height: 280px; }
-      .feat-event-body { padding: 40px 28px 48px; }
+      .feat-event { grid-template-columns: 1fr; height: auto; }
+      .feat-event-poster { height: 320px; }
+      .feat-event-body { height: auto; padding: 36px 24px 40px; }
       .feat-event-title { font-size: 2rem; }
     }
   </style>
