@@ -585,6 +585,204 @@
       color: var(--white) !important;
       letter-spacing: 0.06em;
     }
+  
+    /* ─── ANNOUNCEMENT BANNER ─── */
+    .announce-bar {
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      z-index: 190;
+      background: #1a9e96;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 24px;
+      height: 48px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .announce-bar strong {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .announce-bar .ann-dot {
+      opacity: 0.5;
+      margin: 0 2px;
+    }
+    .announce-bar .ann-btn {
+      background: #fff;
+      color: #1a9e96;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .announce-bar .ann-btn:hover {
+      background: #e8faf9;
+    }
+    .announce-bar .ann-close {
+      position: absolute;
+      right: 16px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color 0.2s;
+    }
+    .announce-bar .ann-close:hover { color: #fff; }
+    /* Push page content down when banner is visible */
+    body.has-banner .hero { padding-top: 48px; }
+    @media (max-width: 700px) {
+      .announce-bar { height: auto; padding: 10px 40px 10px 16px; flex-wrap: wrap; gap: 8px; top: 64px; }
+      .announce-bar strong { font-size: 0.82rem; }
+      body.has-banner .hero { padding-top: 0; }
+    }
+  
+    .ev-panel-register {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a9e96;
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      margin-top: 4px;
+      transition: background 0.2s;
+    }
+    .ev-panel-register:hover { background: #158a82; color: #fff; }
+  
+    /* ─── FEATURED EVENT CARD ─── */
+    .feat-event {
+      width: 100%;
+      background: #0d3d3a;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+      overflow: hidden;
+    }
+    .feat-event-poster {
+      position: relative;
+      overflow: hidden;
+      background: #1a9e96;
+    }
+    .feat-event-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+    .feat-event:hover .feat-event-poster img { transform: scale(1.03); }
+    .feat-event-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 56px 64px;
+      gap: 0;
+    }
+    .feat-event-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #1a9e96;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .feat-event-label::before {
+      content: '';
+      width: 18px;
+      height: 1.5px;
+      background: #1a9e96;
+    }
+    .feat-event-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+    .feat-event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .feat-event-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .feat-event-detail .fd-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      min-width: 64px;
+      flex-shrink: 0;
+    }
+    .feat-event-detail .fd-val {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .feat-event-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 40px;
+      max-width: 380px;
+    }
+    .feat-event-register {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #1a9e96;
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      align-self: flex-start;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .feat-event-register:hover { background: #158a82; transform: translateY(-1px); color: #fff; }
+    .feat-event-limited {
+      margin-top: 16px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    @media (max-width: 900px) {
+      .feat-event { grid-template-columns: 1fr; min-height: auto; }
+      .feat-event-poster { height: 280px; }
+      .feat-event-body { padding: 40px 28px 48px; }
+      .feat-event-title { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -608,6 +806,17 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- ANNOUNCEMENT BANNER -->
+<div class="announce-bar" id="announce-bar">
+  <strong>Ġimgħa Stejjer Għat-Tfal</strong>
+  <span class="ann-dot">·</span>
+  <span>23 ta' Ottubru · Ċentru Santa Lucija</span>
+  <span class="ann-dot">·</span>
+  <span>Postijiet limitati</span>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScu3FLO0MWT_yY_jRtAL8XpJSt5u8g4x-mBXw4xhImKFsAhBw/viewform" target="_blank" rel="noopener" class="ann-btn">Irreġistra</a>
+  <button class="ann-close" id="ann-close" aria-label="Close">×</button>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -634,6 +843,40 @@
       <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M2 2l9 8 9-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
+  </div>
+</section>
+
+<!-- FEATURED EVENT -->
+<section class="feat-event">
+  <div class="feat-event-poster">
+    <img src="images/poster-ottubru.png" alt="Ġimgħa Stejjer Għat-Tfal — 23 ta' Ottubru 2026" />
+  </div>
+  <div class="feat-event-body">
+    <div class="feat-event-label">Coming Up</div>
+    <h2 class="feat-event-title">Ġimgħa Stejjer<br>Għat-Tfal</h2>
+    <div class="feat-event-details">
+      <div class="feat-event-detail">
+        <span class="fd-label">Date</span>
+        <span class="fd-val">23 ta' Ottubru 2026</span>
+      </div>
+      <div class="feat-event-detail">
+        <span class="fd-label">Time</span>
+        <span class="fd-val">17:30 &ndash; 19:30</span>
+      </div>
+      <div class="feat-event-detail">
+        <span class="fd-label">Venue</span>
+        <span class="fd-val">Ċentru Santa Lucija, Għawdex</span>
+      </div>
+      <div class="feat-event-detail">
+        <span class="fd-label">Ages</span>
+        <span class="fd-val">5 &ndash; 12-il sena</span>
+      </div>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScu3FLO0MWT_yY_jRtAL8XpJSt5u8g4x-mBXw4xhImKFsAhBw/viewform" target="_blank" rel="noopener" class="feat-event-register">
+      Irreġistra
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="feat-event-limited">Postijiet Limitati</div>
   </div>
 </section>
 
@@ -924,7 +1167,7 @@
       var det='<div class="ev-panel-detail"><span class="d-label">Date</span><span class="d-value">'+fDate(ev.date)+'</span></div>';
       if(ev.time)det+='<div class="ev-panel-detail"><span class="d-label">Time</span><span class="d-value">'+ev.time+'</span></div>';
       if(ev.location)det+='<div class="ev-panel-detail"><span class="d-label">Location</span><span class="d-value">'+ev.location+'</span></div>';
-      bo.innerHTML=(ev.tag?'<div class="ev-panel-tag">'+ev.tag+'</div>':'')+'<div class="ev-panel-title">'+ev.title+'</div>'+(ev.description?'<p class="ev-panel-desc">'+ev.description+'</p>':'')+'<div class="ev-panel-details">'+det+'</div>'+(ev.free?'<div class="ev-panel-free">Free entry</div>':'');
+      bo.innerHTML=(ev.tag?'<div class="ev-panel-tag">'+ev.tag+'</div>':'')+'<div class="ev-panel-title">'+ev.title+'</div>'+(ev.description?'<p class="ev-panel-desc">'+ev.description+'</p>':'')+'<div class="ev-panel-details">'+det+'</div>'+(ev.free?'<div class="ev-panel-free">Free entry</div>':'')+(ev.register?'<a href="'+ev.register+'" target="_blank" rel="noopener" class="ev-panel-register">Irreġistra / Register <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>':'');
       ov.classList.add('open');document.body.style.overflow='hidden';
     }
     function closeOv(){var ov=document.getElementById('ev-overlay');if(ov)ov.classList.remove('open');document.body.style.overflow='';}
@@ -984,6 +1227,26 @@
       });
     });
   }
+
+  // Announcement banner
+  (function() {
+    var bar = document.getElementById('announce-bar');
+    var closeBtn = document.getElementById('ann-close');
+    if (!bar) return;
+    // Check if dismissed
+    try {
+      if (localStorage.getItem('ann-dismissed-evt-003') === '1') {
+        bar.style.display = 'none';
+        return;
+      }
+    } catch(e) {}
+    document.body.classList.add('has-banner');
+    if (closeBtn) closeBtn.addEventListener('click', function() {
+      bar.style.display = 'none';
+      document.body.classList.remove('has-banner');
+      try { localStorage.setItem('ann-dismissed-evt-003', '1'); } catch(e) {}
+    });
+  })();
 </script>
 </body>
 </html>
