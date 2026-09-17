@@ -3,11 +3,12 @@
     "id": "evt-003",
     "title": "Ġimgħa Stejjer Għat-Tfal",
     "date": "2026-10-23",
-    "time": "17:30",
-    "location": "Ċentru Santa Lucija",
-    "description": "Our quarterly literary evening in partnership with Inizjamed — SPECIAL KIDS EDITION! Check out website soon for more info",
+    "time": "17:30 - 19:30",
+    "location": "Ċentru Santa Lucija, Għawdex",
+    "description": "A special children's edition of our literary evening series, in partnership with Inizjamed. Featuring a reading by Leanne Ellul, face painting, a bouncy castle, and a free book for every child who attends. For children aged 5 to 12. Places are limited.",
     "tag": "Arts",
     "free": true,
-    "poster": ""
+    "poster": "images/poster-ottubru.png",
+    "register": "https://docs.google.com/forms/d/e/1FAIpQLScu3FLO0MWT_yY_jRtAL8XpJSt5u8g4x-mBXw4xhImKFsAhBw/viewform"
   }
 ]
