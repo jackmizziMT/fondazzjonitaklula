@@ -817,6 +817,20 @@
     .ev-panel-location-mt {
       font-size: 0.8rem; color: #A09890; font-style: italic;
     }
+  
+    .ev-featured-title-mt {
+      font-family: var(--fd); font-size: 1rem;
+      font-style: italic; font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      margin-top: -6px; margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .ev-row-title-mt {
+      font-family: var(--fd); font-size: 0.85rem;
+      font-style: italic; font-weight: 400;
+      color: var(--light); margin-top: 1px;
+      line-height: 1.2;
+    }
   </style>
 </head>
 <body>
@@ -1146,7 +1160,7 @@
     const meta0 = [first.time, first.location, first.free ? 'Free entry' : null].filter(Boolean);
     html += '<div class="ev-featured" data-ev-id="'+first.id+'"><div class="ev-featured-date"><div class="fd">'+d0.getDate()+'</div><div class="fm">'+MONTHS[d0.getMonth()]+'<br>'+d0.getFullYear()+'</div></div><div class="ev-featured-divider"></div><div class="ev-featured-body">'+
       (first.tag ? '<div class="ev-featured-tag">'+first.tag+'</div>' : '')+
-      '<h3>'+first.title+'</h3><div class="ev-featured-meta">'+meta0.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-featured-arrow">'+arrowSvg+'</div></div>';
+      '<h3>'+first.title+'</h3>'+(first.title_mt?'<div class="ev-featured-title-mt">'+first.title_mt+'</div>':'')+'<div class="ev-featured-meta">'+meta0.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-featured-arrow">'+arrowSvg+'</div></div>';
     upcoming.slice(1).forEach(ev => {
       const d = parseDate(ev.date);
       const meta = [ev.time, ev.location].filter(Boolean);
