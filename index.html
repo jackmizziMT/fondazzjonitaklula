@@ -802,6 +802,21 @@
       margin-top: 8px;
       display: block;
     }
+  
+    /* BILINGUAL OVERLAY */
+    .ev-panel-title-mt {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem; font-weight: 400; font-style: italic;
+      color: #A09890; margin-top: -10px; margin-bottom: 4px;
+    }
+    .ev-panel-desc-mt {
+      font-size: 0.92rem; font-weight: 300; line-height: 1.78;
+      color: #A09890; font-style: italic;
+      padding-top: 12px; border-top: 1px solid #E2DDD6; margin-top: 4px;
+    }
+    .ev-panel-location-mt {
+      font-size: 0.8rem; color: #A09890; font-style: italic;
+    }
   </style>
 </head>
 <body>
@@ -1190,7 +1205,7 @@
       var det='<div class="ev-panel-detail"><span class="d-label">Date</span><span class="d-value">'+fDate(ev.date)+'</span></div>';
       if(ev.time)det+='<div class="ev-panel-detail"><span class="d-label">Time</span><span class="d-value">'+ev.time+'</span></div>';
       if(ev.location)det+='<div class="ev-panel-detail"><span class="d-label">Location</span><span class="d-value">'+ev.location+'</span></div>';
-      bo.innerHTML=(ev.tag?'<div class="ev-panel-tag">'+ev.tag+'</div>':'')+'<div class="ev-panel-title">'+ev.title+'</div>'+(ev.description?'<p class="ev-panel-desc">'+ev.description+'</p>':'')+'<div class="ev-panel-details">'+det+'</div>'+(ev.free?'<div class="ev-panel-free">Free entry</div>':'')+(ev.register?'<a href="'+ev.register+'" target="_blank" rel="noopener" class="ev-panel-register">Irreġistra / Register <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>':'');
+      bo.innerHTML=(ev.tag?'<div class="ev-panel-tag">'+ev.tag+'</div>':'')+'<div class="ev-panel-title">'+ev.title+'</div>'+(ev.title_mt?'<div class="ev-panel-title-mt">'+ev.title_mt+'</div>':'')+(ev.description?'<p class="ev-panel-desc">'+ev.description+'</p>':'')+(ev.description_mt?'<p class="ev-panel-desc-mt">'+ev.description_mt+'</p>':'')+'<div class="ev-panel-details">'+det+'</div>'+(ev.free?'<div class="ev-panel-free">Free entry</div>':'')+(ev.register?'<a href="'+ev.register+'" target="_blank" rel="noopener" class="ev-panel-register">Irreġistra / Register <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>':'');
       ov.classList.add('open');document.body.style.overflow='hidden';
     }
     function closeOv(){var ov=document.getElementById('ev-overlay');if(ov)ov.classList.remove('open');document.body.style.overflow='';}

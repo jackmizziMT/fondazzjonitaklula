@@ -21,5 +21,19 @@
     "tag": "Community",
     "free": true,
     "poster": ""
+  },
+  {
+    "id": "evt-005",
+    "title": "Christmas Concert",
+    "title_mt": "Kunċert tal-Milied",
+    "date": "2026-12-18",
+    "time": "19:00",
+    "location": "Santa Lucija Church, Gozo",
+    "location_mt": "Knisja Santa Luċija, Għawdex",
+    "description": "A delightful Christmas Concert to revive traditional Christmas carols animated by children from the village. There will be a small band present. Children from the village who know how to play a musical instrument will have the chance to showcase their talent. During the concert a person from the village will be given a token of recognition for services given to the village community. At the end, honey rings and traditional coffee will be served.",
+    "description_mt": "Kunċert b'kant ta' tradizzjonali tal-Milied mit-tfal tar-raħal. Ser ikun hemm banda żgħira takkompanja l-kant tat-tfal. It-tfal mir-raħal li jafu idoqqu xi strument sejrin jingħataw opportunita li juru t-talent tagħhom matul l-kunċert. Waqt il-kunċert persuna mir-raħal sejra tkun rikonoxxuta għas-servizzi li tat lir-raħal. F'għeluq il-kunċert, jiġu servuti qaġħaq tal-għasel u kafè tradizzjonali.",
+    "tag": "Culture",
+    "free": true,
+    "poster": ""
   }
 ]
