@@ -10,7 +10,7 @@
     "free": true,
     "poster": "images/event-gimghastejjer-2026-Ottubru.png",
     "register": "https://docs.google.com/forms/d/e/1FAIpQLScu3FLO0MWT_yY_jRtAL8XpJSt5u8g4x-mBXw4xhImKFsAhBw/viewform"
-  }
+  },
   {
     "id": "evt-004",
     "title": "Festival tad-Dawl",
@@ -24,6 +24,5 @@ who walk across the village square accompanied by traditional music. A bonfire i
     "tag": "Arts",
     "free": true,
     "poster": "",
-
   }
 ]
