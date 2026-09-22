@@ -1164,7 +1164,7 @@
     upcoming.slice(1).forEach(ev => {
       const d = parseDate(ev.date);
       const meta = [ev.time, ev.location].filter(Boolean);
-      html += '<div class="ev-row" data-ev-id="'+ev.id+'"><div class="ev-date"><div class="d">'+d.getDate()+'</div><div class="m">'+MONTHS[d.getMonth()]+' '+d.getFullYear()+'</div></div><div class="ev-body"><h3>'+ev.title+'</h3><div class="ev-meta">'+meta.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-arr">'+smallArrow+'</div></div>';
+      html += '<div class="ev-row" data-ev-id="'+ev.id+'"><div class="ev-date"><div class="d">'+d.getDate()+'</div><div class="m">'+MONTHS[d.getMonth()]+' '+d.getFullYear()+'</div></div><div class="ev-body"><h3>'+ev.title+'</h3>'+(ev.title_mt?'<div class="ev-row-title-mt">'+ev.title_mt+'</div>':'')+'<div class="ev-meta">'+meta.map(m=>'<span>'+m+'</span>').join('')+'</div></div><div class="ev-arr">'+smallArrow+'</div></div>';
     });
     container.innerHTML = html;
   }
