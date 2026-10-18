@@ -1,0 +1,7 @@
+[
+  {"name": "Ġimgħa Stejjer", "when": "Four times a year", "month": 2, "img": "images/past-events/20260501gimgħastejjer/3.jpg", "text": "Literary evenings with Inizjamed, with readings by Maltese writers. The October edition is for children."},
+  {"name": "Bis-Saħħa Wine Festival", "when": "June", "month": 6, "img": "images/event-winefestival_2025.jpg", "text": "Local wines, food stalls and live music in Pjazza Santa Luċija."},
+  {"name": "Festival tad-Dawl", "when": "December", "month": 12, "img": "images/past-events/20251205Festivaltad-dawl/cover.jpg", "text": "A procession from the church to a bonfire in the square, for the feast of Santa Luċija."},
+  {"name": "Kunċert tal-Milied", "when": "December", "month": 12, "img": "images/hero-knisja.jpg", "text": "Christmas carols by the village children in the church, and a recognition for one resident's service to the village."},
+  {"name": "The Ta' Klula Free Library", "when": "All year", "month": 0, "img": "images/phonebox-library.jpg", "text": "A small library in the telephone booth next to the church. Take a book, return it, or leave one for the next reader."}
+]
