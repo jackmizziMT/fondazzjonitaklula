@@ -3,7 +3,7 @@
     "id": "evt-003",
     "title": "Ġimgħa Stejjer Għat-Tfal",
     "date": "2026-10-23",
-    "time": "17:30 – 19:30",
+    "time": "18:30 – 20:30",
     "location": "Ċentru Santa Luċija, Għawdex",
     "audience": "Ages 5 to 12",
     "description": "A special children's edition of our literary evening series, in partnership with Inizjamed. Featuring a reading by Leanne Ellul, face painting, a bouncy castle, and a free book for every child who attends. Places are limited.",
@@ -22,8 +22,8 @@
     "date": "2026-12-12",
     "time": "19:00",
     "location": "Pjazza Santa Luċija, Għawdex",
-    "description": "A short procession led by a young girl wearing a white robe and a crown of candles, representing Saint Lucy. Followed by girls also dressed in white who walk across the village square accompanied by traditional music. A bonfire is lit to celebrate light. Santa Luċija buns will be served to those present.",
-    "description_mt": "Mixja qasira mill-knisja sa ħdejn ħuġġieġa li ddawwal il-pjazza b'numru ta' tfajliet b'ilbies abjad, faxxa ħamra ma' qaddhom u b'xemgħa f'idejhom jakkumpanjaw tfajla b'kuruna bix-xemgħat fuq rasha li tirrappreżenta lil Santa Luċija. Wara jitqassmu pasti ta' Santa Luċija lil dawk preżenti.",
+    "description": "A short procession led by a young girl wearing a white robe and a crown of candles, representing Saint Lucy. Followed by girls also dressed in white who walk across the village square accompanied by traditional music. A bonfire is lit to celebrate light.",
+    "description_mt": "Purċussjoni qasira immexxija minn tfajla b'kuruna bix-xemgħat fuq rasha li tirrappreżenta lil Santa Luċija. Jakkumpanjawha jkun hemm numru ta' tfajliet b'ilbies abjad, faxxa ħamra ma' qaddhom u b'xemgħa f'idejhom.",
     "tag": "Community",
     "free": true,
     "poster": "images/poster-festival-tad-dawl-2026.jpg"
@@ -36,7 +36,7 @@
     "time": "19:00",
     "location": "Knisja Santa Luċija, Għawdex",
     "description": "A Christmas Concert to revive traditional Christmas carols animated by children from the village, followed by a performance by the Golden Harmony String Quartet. Children from the village who know how to play a musical instrument will have the chance to showcase their talent. During the concert a person from the village will be given a token of recognition for services given to the village community. At the end, honey rings and traditional coffee will be served.",
-    "description_mt": "Kunċert b'kant tradizzjonali tal-Milied mit-tfal tar-raħal. Wara l-kant tat-tfal, ser idoqq il-Golden Harmony String Quartet. It-tfal mir-raħal li jafu jdoqqu xi strument sejrin jingħataw opportunità li juru t-talent tagħhom matul il-kunċert. Waqt il-kunċert persuna mir-raħal sejra tkun rikonoxxuta għas-servizzi li tat lir-raħal. F'għeluq il-kunċert, jiġu servuti qagħaq tal-għasel u kafè tradizzjonali.",
+    "description_mt": "Kunċert b'kant tradizzjonali tal-Milied mit-tfal tar-raħal. Wara l-kant tat-tfal, ser jkun hemm performance minn Golden Harmony String Quartet. It-tfal mir-raħal li jafu jdoqqu xi strument sejrin jingħataw opportunità li juru t-talent tagħhom matul il-kunċert. Waqt il-kunċert persuna mir-raħal sejra tkun rikonoxxuta għas-servizzi li tat lir-raħal. F'għeluq il-kunċert, jiġu servuti qagħaq tal-għasel u kafè tradizzjonali.",
     "tag": "Culture",
     "free": true,
     "poster": "images/poster-kuncert-tal-milied-2026.jpg"
